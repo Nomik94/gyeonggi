@@ -24,8 +24,8 @@
     });
 
 
-  // function getlaundry() {
-  //     let title = $("#title").val();
+  // function post_laundry() {
+  //     let needs = $("#needs").val();
   //     let content = $("#content").val();
   //     $.ajax({
   //         type: "POST",
@@ -66,16 +66,12 @@
 </div>
     <h2 style="text-align: center">세탁 서비스 신청 하기</h2>
     <div class="mb-3">
-        <input type="text" name="email" style="margin-top:30px; width:80%; text-align: center; margin-left:10%" class="form-control" placeholder="email">
-        <input type="password" name="password" style="margin-top:30px; width:80%; text-align: center; margin-left:10%" class="form-control" placeholder="password">
-        <input type="text" name="password" style="margin-top:30px; width:80%; text-align: center; margin-left:10%" class="form-control" placeholder="이름">
-        <input type="text" name="address" style="margin-top:30px; width:80%; text-align: center; margin-left:10%" class="form-control" placeholder="집주소">
-        <input type="text" name="phone" style="margin-top:30px; width:80%; text-align: center; margin-left:10%" class="form-control" placeholder="전화번호">
-
+        <input type="file" style="margin-top:30px; width:80%; text-align: center; margin-left:10%"class="form-control" id="myimg" name="myimg" accept="image/*" onchange="loadFile(this)">
+        <input type="text" name="needs" style="margin-top:30px; width:80%; text-align: center; margin-left:10%" class="form-control" placeholder="요구사항을 입력해주세요">
     </div>
 </div>
     <div class="container" style="text-align: center">
-<button type="button" style="width:150px; height:60px;margin-top: 40px; margin-right:20px;" class="btn btn-primary" onclick="">신청하기</button>
+<button type="button" style="width:150px; height:60px;margin-top: 40px; margin-right:20px;" class="btn btn-primary" onclick="post_laundry()">신청하기</button>
     </div>
 </div>
 
