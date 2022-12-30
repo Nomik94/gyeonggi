@@ -19,9 +19,15 @@
 </style>
 <script>
 
-    document.ready(function(){
-       getlaundry();
-    });
+//    document.ready(function(){
+//       getlaundry();
+//    });
+    const myModal = document.getElementById('myModal')
+    const myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', () => {
+        myInput.focus()
+    })
 
 
   // function getlaundry() {
@@ -62,8 +68,7 @@
         </div>
     </div>
 <div class="container">
-    <div class="mb-3">
-</div>
+
     <h2>세탁 서비스 신청 내역</h2>
     <hr/>
     <table style="width: 100%; text-align: center">
@@ -73,6 +78,7 @@
             <th>집 주소</th>
             <th>세탁물 사진</th>
             <th>세탁 요청사항</th>
+            <th>현재 진행사항</th>
             <th>리뷰</th>
         </tr>
 <!--        여기 부분에 들어갈 데이터들-->
@@ -82,7 +88,8 @@
             <td>더미 데이터</td>
             <td>더미 데이터</td>
             <td>더미 데이터</td>
-            <td><button>리뷰 작성하기</button></td>
+            <td>더미 데이터</td>
+            <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">리뷰 작성하기</button></td>
         </tr>
     </table>
 
@@ -91,6 +98,34 @@
 <button type="button" style="width:200px; height:60px;margin-top: 40px; margin-right:20px;" class="btn btn-primary" onclick="board_write()">새로운 세탁 서비스 신청</button>
     </div>
 </div>
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">리뷰 작성하기</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>평점을 선택해 주세요.</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                    <input style="margin-top: 15px; height:40px;" type="text" class="form-control"placeholder="리뷰내용을 입력해주세요.">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>
