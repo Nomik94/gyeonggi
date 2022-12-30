@@ -19,27 +19,29 @@
 </style>
 <script>
 
-    document.ready(function(){
-       getlaundry();
-    });
+    // document.ready(function(){
+    //    getlaundry();
+    // });
+    let myimg = $("#myimg").val();
+    console.log(myimg);
 
-
-  // function post_laundry() {
-  //     let needs = $("#needs").val();
-  //     let content = $("#content").val();
-  //     $.ajax({
-  //         type: "POST",
-  //         url: "/posts",
-  //         data: {
-  //             title: title,
-  //             content: content,
-  //         },
-  //         success: function (response) {
-  //             alert(response["msg"]);
-  //             window.location.replace("/posts");
-  //         }
-  //     });
-  // }
+  function post_laundry() {
+      let needs = $("#needs").val();
+      let myimg = $("#myimg").val();
+      console.log(myimg);
+      $.ajax({
+          type: "POST",
+          url: "/api/laundry",
+          data: {
+              needs: needs,
+              myimg: myimg,
+          },
+          success: function (response) {
+              alert(response["msg"]);
+              window.location.replace("/posts");
+          }
+      });
+  }
     function signOut() {
         localStorage.clear();
         window.location.href = "/logout";
@@ -64,16 +66,17 @@
 <div class="container">
     <div class="mb-3">
 </div>
+    <form action='/api/laundry' encType='multipart/form-data'method="post">
     <h2 style="text-align: center">세탁 서비스 신청 하기</h2>
     <div class="mb-3">
         <input type="file" style="margin-top:30px; width:80%; text-align: center; margin-left:10%"class="form-control" id="myimg" name="myimg" accept="image/*" onchange="loadFile(this)">
         <input type="text" name="needs" style="margin-top:30px; width:80%; text-align: center; margin-left:10%" class="form-control" placeholder="요구사항을 입력해주세요">
     </div>
-</div>
     <div class="container" style="text-align: center">
-<button type="button" style="width:150px; height:60px;margin-top: 40px; margin-right:20px;" class="btn btn-primary" onclick="post_laundry()">신청하기</button>
+<button type="submit" style="width:150px; height:60px;margin-top: 40px; margin-right:20px;" class="btn btn-primary">신청하기</button>
     </div>
+    </form>
 </div>
-
+</div>
 </body>
 </html>

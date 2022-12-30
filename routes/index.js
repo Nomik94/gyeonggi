@@ -11,7 +11,7 @@ const authMiddleware = require("../middlewares/auth-middleware");
 router.use('/signup', signupRouter);
 router.use('/login', loginRouter);
 
-// authMiddleware 
+// authMiddleware
 router.get("/users/me", authMiddleware, async (req, res) => {
 
   res.json({ result: "success" , user: res.locals.user });
