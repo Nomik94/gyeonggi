@@ -16,6 +16,9 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true,
       },
+      phoneNumber: {
+        type: Sequelize.TEXT,
+      },
       password: {
         type: Sequelize.TEXT,
       },
