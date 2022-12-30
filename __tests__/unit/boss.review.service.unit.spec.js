@@ -1,4 +1,3 @@
-const { fn } = require('sequelize');
 const BossReviewService = require('../../services/boss.review.service');
 
 let mockBossReviewService = {
