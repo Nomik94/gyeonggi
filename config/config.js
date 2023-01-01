@@ -9,9 +9,9 @@ module.exports =  {
     },
     "test": {
       "username": "root",
-      "password": "4321aaaa",
+      "password": process.env.MYSQL_AWS_PASSWORD,
       "database": "gyeonggi_test_db",
-      "host": "express-database.csgg3jqefty5.ap-northeast-2.rds.amazonaws.com",
+      "host": process.env.MYSQL_AWS_HOST,
       "dialect": "mysql",
       "logging": false
     },
