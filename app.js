@@ -1,25 +1,31 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
-const cookieParser = require("cookie-parser");
-
 const app = express();
-const router = express.Router();
 
-const userRouter = require("./routes/userRouter");
-const {static} = require("express");
+// ejs 설정
+const ejs = require('ejs');
 
-app.use("/",express.urlencoded({extended:false}),router);
+const port = 8080;
+
+const router = require("./routes");
+const path = require("path");
 
 app.use(express.static("static"));
+
+app.use(express.urlencoded({extended:false}),router);
+
+
+// 시작페이지
 router.get("/", (req,res)=>{
-   return res.sendFile(__dirname + "/static/userPage.html");
+    return res.sendFile(__dirname + "/static/userPage.html");
 });
 
-app.use("/api",userRouter);
+// view engine setup
+// app.set('templates', path.join(__dirname, 'templates'));
+// app.set('view engine', 'ejs');
 
-app.listen(8080,(req,res)=>{
+// 시작 페이지를 제외한 모든 페이지는 api를 거쳐간다. -> routes 안의 index로 간다.
+app.use("/api",router);
+
+app.listen(port,()=>{
     console.log("서버 열림");
 });
-
-
-module.exports = app;
