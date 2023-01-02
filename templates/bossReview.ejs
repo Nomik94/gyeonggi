@@ -54,8 +54,34 @@
         </div>
       </div>
       <div class="container">
-        <h2>사장 페이지</h2>
+        <h2>세탁 서비스 리뷰 내역</h2>
         <hr />
+        <table style="width: 20%; text-align: center">
+          <tr>
+            <th style="width: 15%">평균 점수</th>
+            <th style="width: 5%"></th>
+          </tr>
+        </table>
+        <table style="width: 100%; text-align: center; margin-top: 1.5rem">
+          <tr>
+            <th>리뷰</th>
+            <th>점수</th>
+            <th>날짜</th>
+          </tr>
+          <!--        여기 부분에 들어갈 데이터들-->
+          <% for(let i = 0; i < reviews.length; i++){ %>
+          <tr>
+            <td style="width: 60%"><%= reviews[i].content %></td>
+            <td style="width: 10%"><%= reviews[i].star %></td>
+            <td style="width: 30%">
+              <%=
+              reviews[i].createdAt.toISOString().substring(0,10).replaceAll("-",".")
+              %>
+            </td>
+          </tr>
+          <% } %>
+        </table>
+      </div>
       <div class="container" style="text-align: center">
         <button
           type="button"
@@ -66,12 +92,16 @@
             margin-right: 20px;
           "
           class="btn btn-primary"
-          onclick="location.href='./boss.review.html'"
+          onclick="exitPage()"
         >
-          리뷰 조회하기
+          사장 페이지로 돌아가기
         </button>
       </div>
     </div>
   </body>
-  <script src="../static/js/boss.review.js"></script>
+  <script>
+    function exitPage() {
+      location.href = '/';
+    }
+  </script>
 </html>

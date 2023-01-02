@@ -1,4 +1,4 @@
-const BossReviewRepository = require('../repositories/boss.review.repository');
+const BossReviewRepository = require('../repositories/bossReview.repository');
 const { Review } = require('../models');
 
 class BossReviewService {

@@ -1,4 +1,4 @@
-const BossReviewService = require('../services/boss.review.service');
+const BossReviewService = require('../services/bossReview.service');
 
 class BossReviewController {
   BossReviewService = new BossReviewService();
@@ -6,8 +6,9 @@ class BossReviewController {
   getReviews = async (req, res) => {
     const { userId } = req.params;
     const reviews = await this.BossReviewService.findAllReviews(userId);
+    console.log('reviews:', reviews);
 
-    res.status(200).json({ data: reviews });
+    res.render('bossReview', { reviews: reviews });
   };
 }
 

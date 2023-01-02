@@ -1,11 +1,9 @@
 const express = require('express');
-const BossReviewController = require('../controllers/boss.review.controller');
+const BossReviewController = require('../controllers/bossReview.controller');
 const router = express.Router();
 
 const bossReviewController = new BossReviewController();
 
-router.get('/:userId', bossReviewController.getReviews, function (req, res) {
-  return res.render('boss.review.html');
-});
+router.get('/:userId', bossReviewController.getReviews);
 
 module.exports = router;
