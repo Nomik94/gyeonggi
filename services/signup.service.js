@@ -5,8 +5,8 @@ const SignupRepository = require('../repositories/users.repository');
 class SignupService {
     signupRepository = new SignupRepository();
 
-    createUser = async (userType, email, phoneNumber, password, name, address) => {
-        const createUserData = await this.signupRepository.createUser(userType, email, phoneNumber, password, name, address);
+    createUser = async (userType, email, phoneNumber, password, name, address, point) => {
+        const createUserData = await this.signupRepository.createUser(userType, email, phoneNumber, password, name, address, point);
 
         return{
             userId: createUserData.userId,

@@ -32,14 +32,15 @@
         const password = $('#password').val();
         const name = $('#name').val();
         const address = $('#address').val();
+        const point = 1000000;
 
-        console.log(userType, email, phoneNumber, password, name, address);
+        console.log(userType, email, phoneNumber, password, name, address, point);
 
 
         $.ajax({
             type: "POST",
             url: "/api/signup",
-            data: {userType, email, phoneNumber, password, name, address},
+            data: {userType, email, phoneNumber, password, name, address, point},
             success: function (response) {
                 // location.href = "/login"
                 alert("유저 회원가입 성공!")
@@ -57,13 +58,14 @@
         const password = $('#password').val();
         const name = $('#name').val();
         const address = $('#address').val();
+        const point = 0;
 
-        console.log(userType, email, phoneNumber, password, name, address);
+        console.log(userType, email, phoneNumber, password, name, address, point);
 
         $.ajax({
             type: "POST",
             url: "/api/signup",
-            data: {userType, email, phoneNumber, password, name, address},
+            data: {userType, email, phoneNumber, password, name, address, point},
             success: function (response) {
                 // location.href = "/login"
                 alert("사장님 회원가입 성공!")
