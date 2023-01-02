@@ -4,8 +4,8 @@ const { Work } = require('../models');
 class WorkShowService {
     workShowRepository = new WorkShowRepository(Work);
 
-    findAllwork = async() =>   {
-        const allwork = await this.workShowRepository.findAllwork();
+    findAllWork = async() =>   {
+        const allwork = await this.workShowRepository.findAllWork();
 
         allwork.sort((a, b) => {
             return b.createdAt - a.createdAt;
@@ -24,4 +24,4 @@ class WorkShowService {
 }
 
 
-module.exports = workShowService;
+module.exports = WorkShowService;

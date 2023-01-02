@@ -1,11 +1,11 @@
 const WorkShowService = require("../services/workshow.service");
 
 class WorkShowController {
-    workshowService = new WorkShowService();
+    workShowService = new WorkShowService();
 
 
     getWork = async (req, res, next) => {
-        const WorkShow = await this.workshowService.findAllwork();
+        const WorkShow = await this.workShowService.findAllWork();
     
         res.status(200).json({ data: WorkShow });
       };

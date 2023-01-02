@@ -8,7 +8,7 @@ class WorkShowRepository {
     constructor(WorkModel){
         this.WorkModel = WorkModel;
     }
-    findAllwork = async () => {
+    findAllWork = async () => {
 
         const Works = await this.WorkModel.findAll({
             where: {status:0},
