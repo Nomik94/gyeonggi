@@ -1,11 +1,11 @@
-const WorkshowRepository = require("../repositories/workshow.repository");
+const WorkShowRepository = require("../repositories/workshow.repository");
 const { Work } = require('../models');
 
-class WorkshowService {
-    workshowRepository = new WorkshowRepository(Work);
+class WorkShowService {
+    workShowRepository = new WorkShowRepository(Work);
 
     findAllwork = async() =>   {
-        const allwork = await this.workshowRepository.findAllwork();
+        const allwork = await this.workShowRepository.findAllwork();
 
         allwork.sort((a, b) => {
             return b.createdAt - a.createdAt;
@@ -24,4 +24,4 @@ class WorkshowService {
 }
 
 
-module.exports = WorkshowService;
+module.exports = workShowService;

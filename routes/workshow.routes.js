@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const WorkshowController = require('../controllers/workshow.controller');
-const workshowController = new WorkshowController();
+const WorkShowController = require('../controllers/workshow.controller');
+const workShowController = new WorkShowController();
 
-router.get('/', workshowController.getWork);
-// router.post('/', workshowController.createPost);
+router.get('/', workShowController.getWork);
+router.post('/', workShowController.createPost);
 
 module.exports = router;

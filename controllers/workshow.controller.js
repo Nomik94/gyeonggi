@@ -1,13 +1,13 @@
-const WorkshowService = require("../services/workshow.service");
+const WorkShowService = require("../services/workshow.service");
 
-class WorkshowController {
-    workshowService = new WorkshowService();
+class WorkShowController {
+    workshowService = new WorkShowService();
 
 
     getWork = async (req, res, next) => {
-        const workshow = await this.workshowService.findAllwork();
+        const WorkShow = await this.workshowService.findAllwork();
     
-        res.status(200).json({ data: workshow });
+        res.status(200).json({ data: WorkShow });
       };
 
 
@@ -18,4 +18,4 @@ class WorkshowController {
 
 
 
-module.exports = WorkshowController;
+module.exports = WorkShowController;

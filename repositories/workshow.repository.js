@@ -3,14 +3,14 @@ const { Work } = require('../models');
 const { User } = require('../models');
 const { Op } = require('sequelize');
 
-class WorkshowRepository {
+class WorkShowRepository {
 
-    constructor(workModel){
-        this.workModel = workModel;
+    constructor(WorkModel){
+        this.WorkModel = WorkModel;
     }
     findAllwork = async () => {
 
-        const works = await this.workModel.findAll({
+        const Works = await this.WorkModel.findAll({
             where: {status:0},
             raw: true,
             attributes: ['createdAt', 'status','img', 'userWanted', 'User.name', 'User.address'],
@@ -21,9 +21,9 @@ class WorkshowRepository {
                 }
             ]
         });
-        console.log(works)
-        return works;
+        console.log(Works)
+        return Works;
     }
 }
 
-module.exports = WorkshowRepository;
+module.exports = WorkShowRepository;
