@@ -36,12 +36,10 @@
             url: "/api/login",
             data: {email, password},
             success: function (response) {
+                // 개발자도구 application - cookie에서 확인 가능
                 localStorage.setItem("token", response.token);
-                // console.log(response.token);
-
-                // $.cookie("token", response.token, { path: "/" });
+ 
                 alert(response.token["token"]);
-                // alert("로그인 완료!");
                 // location.href = "/"
             },
             error: function (error) {
