@@ -5,6 +5,6 @@ const WorkShowController = require('../controllers/workshow.controller');
 const workShowController = new WorkShowController();
 
 router.get('/', workShowController.getWork);
-// router.post('/', workShowController.createPost);
+// router.post('/', workShowController.updateWork);
 
 module.exports = router;

@@ -9,13 +9,7 @@ class WorkShowController {
     
         res.status(200).json({ data: WorkShow });
       };
-
-
-
-
-
 }
-
 
 
 module.exports = WorkShowController;

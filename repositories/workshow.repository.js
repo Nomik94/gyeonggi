@@ -1,7 +1,6 @@
-const { resolveInclude } = require('ejs');
 const { Work } = require('../models');
 const { User } = require('../models');
-const { Op } = require('sequelize');
+
 
 class WorkShowRepository {
 
@@ -13,7 +12,7 @@ class WorkShowRepository {
         const Works = await this.WorkModel.findAll({
             where: {status:0},
             raw: true,
-            attributes: ['createdAt', 'status','img', 'userWanted', 'User.name', 'User.address'],
+            attributes: ['workId', 'createdAt', 'status','img', 'userWanted', 'User.name', 'User.address'],
             include: [
                 {
                     model: User,

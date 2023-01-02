@@ -5,13 +5,14 @@ class WorkShowService {
     workShowRepository = new WorkShowRepository(Work);
 
     findAllWork = async() =>   {
-        const allwork = await this.workShowRepository.findAllWork();
+        const allWork = await this.workShowRepository.findAllWork();
 
-        allwork.sort((a, b) => {
+        allWork.sort((a, b) => {
             return b.createdAt - a.createdAt;
         })
-        return allwork.map(Works => {
+        return allWork.map(Works => {
             return{
+                workId : Works.workId,
                 name : Works.name,
                 address : Works.address,
                 status : Works.status,  

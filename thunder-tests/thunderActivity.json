@@ -3,7 +3,7 @@
     "_id": "85f52de6-ea09-44dd-aa90-28b5bd71fca0",
     "colId": "history",
     "containerId": "",
-    "name": "localhost:4000/api/workshow",
+    "name": "세탁물 조회",
     "url": "localhost:4000/api/workshow",
     "method": "GET",
     "sortNum": 0,
@@ -14,17 +14,41 @@
     "tests": []
   },
   {
-    "_id": "807e523e-b262-4ab8-b23b-65675ef47e4d",
+    "_id": "8d5e59b7-b00d-4ce9-b35f-71f8031ccd1c",
     "colId": "history",
     "containerId": "",
-    "name": "localhost:4000/workshow",
-    "url": "localhost:4000/workshow",
-    "method": "GET",
+    "name": "세탁물 업데이트",
+    "url": "localhost:4000/api/updatework",
+    "method": "POST",
     "sortNum": 0,
-    "created": "2023-01-02T06:03:39.889Z",
-    "modified": "2023-01-02T06:03:39.889Z",
+    "created": "2023-01-02T09:00:43.225Z",
+    "modified": "2023-01-02T11:44:11.470Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": " {\n      \"workId\":\"1\",\n      \"status\":\"2\"\n    }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "31d4ac6f-edd6-49bc-9f09-b1bbefca6b7b",
+    "colId": "history",
+    "containerId": "",
+    "name": "세탁물 수락",
+    "url": "localhost:4000/api/workshow",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-01-02T11:14:16.970Z",
+    "modified": "2023-01-02T11:14:16.970Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": " {\n      \"workId\":\"1\",\n      \"status\":\"0\"\n    }",
+      "form": []
+    },
     "tests": []
   }
 ]
