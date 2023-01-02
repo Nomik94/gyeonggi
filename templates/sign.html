@@ -67,7 +67,7 @@
             url: "/api/signup",
             data: {userType, email, phoneNumber, password, name, address, point},
             success: function (response) {
-                // location.href = "/login"
+                location.href = "login"
                 alert("사장님 회원가입 성공!")
             },
             error: function (error) {
