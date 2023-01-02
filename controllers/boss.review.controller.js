@@ -5,7 +5,8 @@ class BossReviewController {
 
   getReviews = async (req, res) => {
     const { userId } = req.params;
-    const reviews = await this.BossReviewService.findAllReview(userId);
+    console.log('controller userId', userId);
+    const reviews = await this.BossReviewService.findAllReviews(userId);
 
     res.status(200).json({ data: reviews });
   };

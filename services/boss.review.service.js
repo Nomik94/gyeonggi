@@ -1,10 +1,10 @@
 const BossReviewRepository = require('../repositories/boss.review.repository');
-const { User } = require('../models');
+const { Review } = require('../models');
 
 class BossReviewService {
-  BossReviewRepository = new BossReviewRepository(User);
+  BossReviewRepository = new BossReviewRepository(Review);
 
-  findAllReview = async (userId) => {
+  findAllReviews = async (userId) => {
     const allReview = await this.BossReviewRepository.findAllReview(userId);
 
     allReview.sort((a, b) => {
