@@ -1,8 +1,10 @@
 const express = require('express');
 const nunjucks = require("nunjucks");
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const app = express();
+app.use(cookieParser());
 
 const route = require('./routes');
 const express_render = require('./renders');

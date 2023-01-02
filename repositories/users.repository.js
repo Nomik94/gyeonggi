@@ -10,6 +10,14 @@ class UserRepository {
         return createUserData;
     }
 
+    findOne = async(email, password) => {
+        const findUser = await User.findOne({
+            where: {email, password}
+        });
+
+        return findUser;
+    }
+
 }
 
 module.exports = UserRepository;

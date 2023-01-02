@@ -1,12 +1,12 @@
 // services/signup.service.js
 
-const SignupRepository = require('../repositories/users.repository');
+const UserRepository = require('../repositories/users.repository');
 
 class SignupService {
-    signupRepository = new SignupRepository();
+    userRepository = new UserRepository();
 
     createUser = async (userType, email, phoneNumber, password, name, address, point) => {
-        const createUserData = await this.signupRepository.createUser(userType, email, phoneNumber, password, name, address, point);
+        const createUserData = await this.userRepository.createUser(userType, email, phoneNumber, password, name, address, point);
 
         return{
             userId: createUserData.userId,

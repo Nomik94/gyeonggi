@@ -10,4 +10,13 @@ router.get('/api/signup', (req, res) => {
     }
 })
 
+router.get('/api/login', (req, res) => {
+    try{
+        res.render("login");
+    } catch (err) {
+        console.log(`${req.method} ${req.originalUrl} : ${error.message}`);
+        res.render('error');
+    }
+})
+
 module.exports = router;
