@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const postsRouter = require('./posts.routes');
-router.use('/posts', postsRouter);
+const workshowRouter = require('./workshow.routes');
+router.use('/workshow', workshowRouter);
 
 module.exports = router;
