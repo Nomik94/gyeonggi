@@ -4,6 +4,8 @@ const router = express.Router();
 
 const bossReviewController = new BossReviewController();
 
-router.get('/:userId', bossReviewController.getReviews);
+router.get('/:userId', bossReviewController.getReviews, function (req, res) {
+  return res.render('boss.review.html');
+});
 
 module.exports = router;
