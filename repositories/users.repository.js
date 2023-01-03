@@ -18,6 +18,12 @@ class UserRepository {
         return findUser;
     }
 
+    findByPk = async(userId) => {
+        const user = await User.findByPk(userId);
+
+        return user;
+    }
+
 }
 
 module.exports = UserRepository;
