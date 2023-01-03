@@ -1,8 +1,9 @@
 const UpdateWorkRepository = require('../repositories/updateWork.repository');
 const { Work } = require('../models');
+const { User } = require('../models');
 
 class UpdateWorkService {
-  workShowRepository = new UpdateWorkRepository(Work);
+  workShowRepository = new UpdateWorkRepository(Work, User);
 
   updateWork = async (workId, status) => {
     if (status === '대기 중') {

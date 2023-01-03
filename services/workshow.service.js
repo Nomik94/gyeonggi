@@ -6,7 +6,6 @@ class WorkShowService {
 
   findAllWork = async () => {
     const allWork = await this.workShowRepository.findAllWork();
-
     allWork.sort((a, b) => {
       return b.createdAt - a.createdAt;
     });
@@ -49,6 +48,7 @@ class WorkShowService {
         img: StartWorks.img,
         userWanted: StartWorks.userWanted,
         createdAt: StartWorks.createdAt,
+        point: StartWorks.point,
       };
     });
   };

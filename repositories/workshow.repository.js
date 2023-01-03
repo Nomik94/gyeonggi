@@ -39,6 +39,7 @@ class WorkShowRepository {
         'userWanted',
         'User.name',
         'User.address',
+        'User.point',
       ],
       include: [
         {
