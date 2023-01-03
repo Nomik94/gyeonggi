@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>리뷰 조회</title>
+    <title>사장 페이지</title>
   </head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link
@@ -56,6 +56,31 @@
       <div class="container">
         <h2>사장 페이지</h2>
         <hr />
+        <table style="width: 100%; text-align: center; margin-top: 1.5rem">
+          <tr>
+            <th>이름</th>
+            <th>주소</th>
+            <th>이미지</th>
+            <th>요구사항</th>
+            <th>시간</th>
+            <th>상태</th>
+          </tr>
+          <!--        여기 부분에 들어갈 데이터들-->
+          <% for(let i = 0; i < data.length; i++){ %>
+          <tr>
+            <td style="width: 10%"><%= data[i].name %></td>
+            <td style="width: 10%"><%= data[i].address %></td>
+            <td style="width: 10%"><%= data[i].img %></td>
+            <td style="width: 30%"><%= data[i].userWanted %></td>
+            <td style="width: 20%">
+              <%=
+              data[i].createdAt.toISOString().substring(0,10).replaceAll("-",".")
+              %>
+            </td>
+            <td style="width: 20%"><%= data[i].status %></td>
+          </tr>
+          <% } %>
+        </table>
       <div class="container" style="text-align: center">
         <button
           type="button"
@@ -75,7 +100,7 @@
   </body>
   <script>
     function exitPageToReview() {
-      location.href = '/api/review/:userId';
+      location.href = '/api/review/1';
     }
   </script>
 </html>

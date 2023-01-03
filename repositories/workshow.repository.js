@@ -1,5 +1,6 @@
 const { Work } = require('../models');
 const { User } = require('../models');
+const { Op } = require('sequelize');
 
 class WorkShowRepository {
   constructor(WorkModel) {
@@ -26,9 +27,9 @@ class WorkShowRepository {
     });
     return Works;
   };
-  findAllStartWork = async () => {
+  findAllStartWork = async (userId) => {
     const StartWorks = await this.WorkModel.findAll({
-      where: { status: 1 },
+      where: { [Op.and]: [{ status: 1 }, { boss_id: userId }] },
       raw: true,
       attributes: [
         'createdAt',

@@ -22,8 +22,14 @@ class WorkShowService {
     });
   };
 
-  findStartWork = async () => {
-    const allStartWork = await this.workShowRepository.findAllStartWork();
+  findStartWork = async (userId) => {
+    const allStartWork = await this.workShowRepository.findAllStartWork(userId);
+
+    for (let i = 0; i < allStartWork.length; i++) {
+      if (allStartWork[i].status === 1) {
+        allStartWork[i].status = '수거 중';
+      }
+    }
 
     allStartWork.sort((a, b) => {
       return b.createdAt - a.createdAt;

@@ -1,4 +1,4 @@
-const ReviewRepository = require('../../repositories/boss.review.repository');
+const ReviewRepository = require('../../repositories/bossReview.repository');
 
 let mockReviewModel = {
   findAll: jest.fn(),

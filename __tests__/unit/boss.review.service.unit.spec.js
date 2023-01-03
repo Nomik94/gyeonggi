@@ -1,4 +1,4 @@
-const BossReviewService = require('../../services/boss.review.service');
+const BossReviewService = require('../../services/bossReview.service');
 
 let mockBossReviewService = {
   findAllReview: jest.fn(),

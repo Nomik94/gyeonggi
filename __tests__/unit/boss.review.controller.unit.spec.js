@@ -1,4 +1,4 @@
-const BossReviewController = require('../../controllers/boss.review.controller');
+const BossReviewController = require('../../controllers/bossReview.controller');
 
 let mockReviewService = {
   findAllReview: jest.fn(),

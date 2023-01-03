@@ -5,12 +5,16 @@ class BossReviewRepository {
     this.bossModel = bossModel;
   }
   findAllReview = async (userId) => {
-    const reviews = await this.bossModel.findAll({
-      where: { user_id: userId },
-      attributes: ['star', 'content', 'createdAt'],
-    });
+    try {
+      const reviews = await this.bossModel.findAll({
+        where: { user_id: userId },
+        attributes: ['star', 'content', 'createdAt'],
+      });
 
-    return reviews;
+      return reviews;
+    } catch (error) {
+      return error;
+    }
   };
 }
 
