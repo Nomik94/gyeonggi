@@ -17,7 +17,7 @@ class LoginController {
             res.cookie('token', token['token']);
             res.status(200).json({
                 result: "success",
-                token: token,
+                token: token
             });
         } catch(err) {
             res.status(400).json({

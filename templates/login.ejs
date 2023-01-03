@@ -27,6 +27,7 @@
 
 </style>
 <script>
+
     // 로그인 실행
     function loginEvent() {
         const email = $('#email').val()
@@ -41,7 +42,7 @@
                 // localStorage.setItem("token", response.token["token"]);
                 // $.cookie("mytoken", response.token["token"], { path: "/" });
  
-                alert(response.token["token"]);
+                // alert(response.userType);
                 location.href = "/api"
             },
             error: function (error) {

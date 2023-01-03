@@ -32,6 +32,22 @@
         if (token) {
             $('#btn_login').hide();
             $('#btn_logout').show();
+
+            $.ajax({
+                type: "GET",
+                url: "/api/users/me",
+                data: {},
+                success: function (response){
+                    alert(response.user.userType);
+                    if(response.user.userType === 1) {
+                        location.href = "/api/signup"; // 사용자 페이지로 이동
+                    } else if(response.user.userType === 0) {
+                        location.href = "/api/users/me"; // 사장 페이지로 이동
+                    }
+                    
+                }
+            });
+
         } else {
             // 토큰이 없을 경우 
             $('#btn_login').show();

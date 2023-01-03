@@ -27,16 +27,15 @@ module.exports = (req, res, next) => {
         const { userId } = jwt.verify(token, process.env.SECRET_KEY);
 
         const id = userId.userId;
-        // console.log(id);
+        console.log(id);
 
         // console.log(res.locals.user);
-        console.log(User.findByPk(id));
+        console.log(User.findByPk(id)); // 여기서 막힘...이유를 찾아야함!!!!!
         User.findByPk(id).then((user) => {
             res.locals.user = user;
             // console.log(user);
             next();
         });
-        console.log(res.locals.user);
     } catch (err) {
         res.status(401).send({
             errorMessage: "로그인 후 이용해 주세요.222"

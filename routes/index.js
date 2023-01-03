@@ -14,9 +14,10 @@ router.use('/login', loginRouter);
 // authMiddleware 테스트
 router.get("/users/me", authMiddleware, async (req, res) => {
 //   console.log(res.locals.user);
-  res.send({ user: res.locals.user });
+  res.json({ result: "success" , user: res.locals.user });
     // const { user } = res.locals;
     // res.send({user,});
 });
+
 
 module.exports = router;
