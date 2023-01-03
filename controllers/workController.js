@@ -1,6 +1,6 @@
 // 서비스 가져오기
 const WorkService = require("../services/workService");
-const ejs = require('ejs');
+const {render} = require("ejs");
 
 // 클래스 생성
 class workController{
@@ -8,8 +8,7 @@ class workController{
 
     getWorks = async (req,res,next)=>{
         const works =await this.workService.findAllWorks();
-        console.log(works);
-        res.status(200).json({data:works});
+        res.render("userPage",{works:works});
     }
 
     //createWork를 실행한다.
@@ -25,10 +24,11 @@ class workController{
         const {needs} = req.body; //요구사항 입력 받은 값을 가져오기
 
         // createWorkDate = workService의 리턴 값이므로 workService의createWork에(userId,img,needs) 값을 가지고 가자.
-        const  createWorkData = await this.workService.createWork(userId,img,needs);
+        const createWorkData = await this.workService.createWork(userId,img,needs);
+        console.log("createWorkData Con",createWorkData);
 
         // 생성은 스테이터스 201
-        res.send("서비스 신청이 완료되었습니다.");
+        res.redirect("/api/laundry");
     }
 }
 

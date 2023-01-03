@@ -25,23 +25,23 @@
     let myimg = $("#myimg").val();
     console.log(myimg);
 
-  function post_laundry() {
-      let needs = $("#needs").val();
-      let myimg = $("#myimg").val();
-      console.log(myimg);
-      $.ajax({
-          type: "POST",
-          url: "/api/laundry",
-          data: {
-              needs: needs,
-              myimg: myimg,
-          },
-          success: function (response) {
-              alert(response["msg"]);
-              window.location.replace("/posts");
-          }
-      });
-  }
+  // function post_laundry() {
+  //     let needs = $("#needs").val();
+  //     let myimg = $("#myimg").val();
+  //     console.log(myimg);
+  //     $.ajax({
+  //         type: "POST",
+  //         url: "/api/laundry",
+  //         data: {
+  //             needs: needs,
+  //             myimg: myimg,
+  //         },
+  //         success: function (response) {
+  //             alert(response["msg"]);
+  //             window.location.replace("/posts");
+  //         }
+  //     });
+  // }
     function signOut() {
         localStorage.clear();
         window.location.href = "/logout";
