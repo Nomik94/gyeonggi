@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const bossReviewRouter = require('./boss_review');
-router.use('/review', bossReviewRouter);
 const WorkShowRouter = require('./workshow.routes');
-router.use('/workshow', WorkShowRouter);
+const UpdateWorkRouter = require('./updatework.routes');
+router.use('/review', bossReviewRouter);
+router.use('/workshow', [WorkShowRouter, UpdateWorkRouter]);
+router.use('/updatework', UpdateWorkRouter);
 
 module.exports = router;

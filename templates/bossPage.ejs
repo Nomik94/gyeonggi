@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>사장 페이지</title>
   </head>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -66,18 +67,18 @@
             <th>상태</th>
           </tr>
           <!--        여기 부분에 들어갈 데이터들-->
-          <% for(let i = 0; i < data.length; i++){ %>
+          <% for(let data of datas){ %>
           <tr>
-            <td style="width: 10%"><%= data[i].name %></td>
-            <td style="width: 10%"><%= data[i].address %></td>
-            <td style="width: 10%"><%= data[i].img %></td>
-            <td style="width: 30%"><%= data[i].userWanted %></td>
+            <td style="width: 10%"><%= data.name %></td>
+            <td style="width: 10%"><%= data.address %></td>
+            <td style="width: 10%"><%= data.img %></td>
+            <td style="width: 30%"><%= data.userWanted %></td>
             <td style="width: 20%">
               <%=
-              data[i].createdAt.toISOString().substring(0,10).replaceAll("-",".")
+              data.createdAt.toISOString().substring(0,10).replaceAll("-",".")
               %>
             </td>
-            <td style="width: 20%"><%= data[i].status %></td>
+            <td style="width: 20%"><%= data.status %><button style="margin-left:1rem" class="status" value="<%= data.status %>, <%= data.workId %>">업데이트</button></td>
           </tr>
           <% } %>
         </table>
@@ -102,5 +103,26 @@
     function exitPageToReview() {
       location.href = '/api/review/1';
     }
+  </script>
+  <script>
+        document.addEventListener("DOMContentLoaded", () => {
+      const status_btn = document.getElementsByClassName('status')
+
+      for(let i = 0; i < status_btn.length; i++) {
+        status_btn[i].addEventListener('click', () => {
+          const data = status_btn[i].value
+          console.log(data)
+          const status = data.split(', ')[0]
+          const workId = data.split(', ')[1]
+          axios({
+            method: 'post',
+            url: '/api/updatework',
+            data: {workId, status}
+          }).then(() => {
+            window.location.reload()
+          })
+        })
+      }
+    })
   </script>
 </html>
