@@ -1,3 +1,5 @@
+// middlewares/auth-middleware.js
+
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 
