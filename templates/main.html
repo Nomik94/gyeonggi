@@ -28,7 +28,7 @@
 
     $(document).ready(function () {
         // 토큰이 있을 경우 로그인 기능 hide
-        const token = $.cookie("mytoken");
+        const token = $.cookie("token");
         if (token) {
             $('#btn_login').hide();
             $('#btn_logout').show();
@@ -48,9 +48,9 @@
     }
 
     function logout() {
-        $.removeCookie("mytoken", { path: "/" });
+        $.removeCookie("token", { path: "/" });
         // localStorage.removeItem('token')
-        // localStorage.clear();
+        localStorage.clear();
         window.location.href = '/api';
     }
 

@@ -14,7 +14,7 @@ class LoginController {
 
             const token = await this.loginService.issueToken(userId);
             // console.log(token['token']);
-            // res.cookie('token', token);
+            res.cookie('token', token['token']);
             res.status(200).json({
                 result: "success",
                 token: token,
