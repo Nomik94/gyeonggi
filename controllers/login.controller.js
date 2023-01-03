@@ -10,10 +10,9 @@ class LoginController {
             const { email, password } = req.body;
 
             const userId = await this.loginService.findOne(email, password);
-            // console.log(userId);
 
             const token = await this.loginService.issueToken(userId);
-            // console.log(token['token']);
+            
             res.cookie('token', token['token']);
             res.status(200).json({
                 result: "success",

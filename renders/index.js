@@ -19,6 +19,15 @@ router.get('/api/login', (req, res) => {
     }
 })
 
+router.get('/api/logout', (req, res) => {
+    try{
+        res.render("logout");
+    } catch (err) {
+        console.log(`${req.method} ${req.originalUrl} : ${error.message}`);
+        res.render('error');
+    }
+})
+
 router.get('/api', (req, res) => {
     try{
         res.render("main");

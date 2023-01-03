@@ -39,10 +39,7 @@
             success: function (response) {
                 // 개발자도구 application - cookie에서 확인 가능
                 console.log(response.token);
-                // localStorage.setItem("token", response.token["token"]);
-                // $.cookie("mytoken", response.token["token"], { path: "/" });
- 
-                // alert(response.userType);
+
                 location.href = "/api"
             },
             error: function (error) {
