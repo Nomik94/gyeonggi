@@ -1,8 +1,9 @@
 const express = require('express');
-const nunjucks = require("nunjucks");
+// const nunjucks = require("nunjucks");
 // const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 // const jwt = require("jsonwebtoken");
+const ejs = require('ejs');
 
 const app = express();
 app.use(cookieParser());
@@ -10,13 +11,15 @@ app.use(cookieParser());
 const route = require('./routes');
 const express_render = require('./renders');
 
-// nunjucks 템플릿 언어 선언
-app.set('view engine', 'html');
-nunjucks.configure('templates', {
-    express: app,
-    watch: true,
-});
+// // nunjucks 템플릿 언어 선언
+// app.set('view engine', 'html');
+// nunjucks.configure('templates', {
+//     express: app,
+//     watch: true,
+// });
 
+app.set('view engine', 'ejs');
+app.set('views', './templates');
 
 // 쿠키 가져오기
 // app.get('/api', function (req, res) {

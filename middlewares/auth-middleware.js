@@ -22,7 +22,7 @@ module.exports = (req, res, next) => {
     try {
         const { userId } = jwt.verify(token, process.env.SECRET_KEY);
         user.findByPk(userId).then((user) => {
-            res.locals.user = user;ㄴ
+            res.locals.user = user;
             next();
         });
     } catch (err) {
