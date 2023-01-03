@@ -7,21 +7,44 @@ class WorkRepository{
     }
 
     findAllWork = async ()=>{
-        const works = await this.workModel.findAll();
-        return works;
+        const works = await this.workModel.findAll({
+            where:{user_id:1},
+        });
+        const user = await this.userModel.findOne({
+            where:{userId:1}
+        });
+        // console.log("works",works[0].dataValues)
+        // console.log("user",user.dataValues.name)
+        const workss = [];
+        for(let i =0; i<works.length; i++){
+            const name = user.dataValues.name;
+            const phone = user.dataValues.phoneNumber;
+            const address = user.dataValues.address;
+            const img = works[i].dataValues.img;
+            const need = works[i].dataValues.userWanted;
+            const status = works[i].dataValues.status;
+            workss.push({
+                name:name,
+                phone:phone,
+                address:address,
+                img:img,
+                need:need,
+                status:status
+            })
+        }
+        return workss;
     }
-
 
     createWork = async (userId,img,needs)=>{
         try{
             // 서비스에서 가져온 값을 가지고 데이터를 데이터 베이스에 넣어줌
-            await this.workModel.create({
+            const createData = [];
+            const createWork = await this.workModel.create({
                 user_id:userId,
                 img:img,
                 status :0,
                 userWanted: needs
             });
-            console.log("re",createWorkData.user_id);
             // 지금 접속중인 유저를 찾아옴
             const user = await this.userModel.findByPk(userId);
             // 유저의 포인트가 10000보다 적으면 포인트가 부족하다고 반환
@@ -33,7 +56,8 @@ class WorkRepository{
                point : user.point-10000
             },{where:{userId : userId}}
             );
-            return {msg:"생성되었습니다."};
+            createData.push(createWork,user);
+            return createData;
         }catch (e){
             return e;
         }

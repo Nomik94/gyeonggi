@@ -8,19 +8,21 @@ class WorkService {
 
     findAllWorks = async ()=>{
         const allWork = await this.workRepository.findAllWork();
-
-        // 정령 시간순
+        // 정렬 시간순
         allWork.sort((a,b)=>{
             return b.createdAt - a.createdAt;
         })
-        console.log("allwork",allWork);
-        return allWork.map(work=>{
-            return{
-                workId:work.workId,
-                userId:work.user_id
-            }
-        });
 
+        return allWork.map((work)=>{
+            return {
+                name: work.name,
+                phone:work.phone,
+                address:work.address,
+                img:work.img,
+                need:work.need,
+                status:work.status
+            };
+        });
     }
     //createWork 실행 !! 컨트롤러 28번 라인에서 넣어준 변수를 받아옴
     createWork = async (userId,img,needs)=>{

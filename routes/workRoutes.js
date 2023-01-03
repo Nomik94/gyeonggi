@@ -18,7 +18,10 @@ const WorksController = require('../controllers/workController');
 // 컨트롤러를 사용하기 위한 선언
 const worksController = new WorksController();
 
-router.get("/",worksController.getWorks);
+// 서비스 신청내역 가져오기
+router.get("/laundry",worksController.getWorks);
+
+
 // 기존url+/laundry가 url로 들어 왔을 때  컨트롤러의 createWork로 이동
 router.post("/laundry",upload.single('myimg'),worksController.createWork);
 
