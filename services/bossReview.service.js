@@ -1,12 +1,13 @@
 const BossReviewRepository = require('../repositories/bossReview.repository');
-const { Work } = require('../models');
+const { Review } = require('../models');
 
 class BossReviewService {
-  bossReviewRepository = new BossReviewRepository(Work);
+  bossReviewRepository = new BossReviewRepository(Review);
 
   findAllReviews = async (userId) => {
     try {
       const allReview = await this.bossReviewRepository.findAllReview(userId);
+      console.log(allReview);
 
       return allReview.map((review) => {
         return {
