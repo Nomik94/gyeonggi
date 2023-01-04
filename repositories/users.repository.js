@@ -22,7 +22,6 @@ class UserRepository {
         const users = await User.findAll({
             where: { name }
         });
-        
         return users;
     }
 
