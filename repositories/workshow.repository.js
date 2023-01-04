@@ -30,15 +30,17 @@ class WorkShowRepository {
   };
   findAllStartWork = async (userId) => {
     const StartWorks = await this.WorkModel.findAll({
-      where: { [Op.and]: [{ status: 1 }, { boss_id: userId }] },
+      where: { [Op.and]: [{ status: { [Op.gt]: 0 } }, { boss_id: userId }] },
       raw: true,
       attributes: [
+        'workId',
         'createdAt',
         'status',
         'img',
         'userWanted',
         'User.name',
         'User.address',
+        'User.point',
       ],
       include: [
         {

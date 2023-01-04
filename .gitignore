@@ -45,7 +45,6 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-config/
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
@@ -160,5 +159,6 @@ dist
 # Ignore all local history of files
 .history
 .ionide
-
+.idea
+.DS_Store
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode

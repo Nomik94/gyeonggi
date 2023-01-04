@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+
+    <!--    BootStrap Library-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <!--    JQuery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <!--    JQuery Cookie-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+  </head>
+  <style></style>
+  <script>
+    let token;
+    // 로그인 실행
+    function loginEvent() {
+      const email = $('#email').val();
+      const password = $('#password').val();
+      $.ajax({
+        type: 'POST',
+        url: '/api/login',
+        data: { email, password },
+        success: function (response) {
+          // 개발자도구 application - cookie에서 확인 가능
+          token = response.token;
+          login();
+        },
+        error: function (error) {
+          alert(error.responseJSON.errorMessage);
+        },
+      });
+    }
+    function login() {
+      if (token) {
+        console.log(token);
+        $.ajax({
+          type: 'GET',
+          url: '/api/users/me',
+          data: {},
+          success: function (response) {
+            // alert(response.user.userType);
+            if (response.user.userType === 1) {
+              location.href = '/api/laundry'; // 사용자 페이지로 이동
+            } else if (response.user.userType === 0) {
+              location.href = '/api/workshow/bosswork'; // 사장 페이지로 이동
+            }
+          },
+        });
+      }
+    }
+
+    function moveToSign() {
+      location.href = 'signup';
+    }
+
+    function moveToLogin() {
+      location.href = '/api/login';
+    }
+  </script>
+  <body>
+    <div class="container" style="margin-top: 20px">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <img
+            src="https://www.gg.go.kr/site/gg/common/assets/images/img-header-logo.jpg"
+            alt="logo"
+          />
+          <h1
+            style="
+              display: inline-block;
+              text-align: center;
+              margin-top: 50px;
+              margin-bottom: 50px;
+            "
+          >
+            경기도민
+          </h1>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+    <div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            aria-describedby="email"
+            placeholder="Enter Email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+          />
+        </div>
+        <button class="btn btn-outline-primary" onclick="loginEvent()">
+          로그인
+        </button>
+        <button class="btn btn-outline-primary" onclick="moveToSign()">
+          회원가입
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
