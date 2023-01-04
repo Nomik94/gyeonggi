@@ -8,12 +8,6 @@ class WorkShowController {
 
     res.render('workShow', { datas: WorkShow });
   };
-  getStartWork = async (req, res, next) => {
-    const userId = res.locals.user.userId;
-    const startWorkShow = await this.workShowService.findStartWork(userId);
-
-    res.render('bossPage', { datas: startWorkShow });
-  };
 }
 
 module.exports = WorkShowController;

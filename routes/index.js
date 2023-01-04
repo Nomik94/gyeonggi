@@ -9,10 +9,12 @@ const WorkShowRouter = require('./workshow.routes');
 const UpdateWorkRouter = require('./updatework.routes');
 const workRouter = require('./workRoutes');
 const reviewsRouter = require('./reveiwsRouter');
+const BossPageRouter = require('./bossPage.routes');
 
 router.use('/review', bossReviewRouter);
 router.use('/workshow', [WorkShowRouter, UpdateWorkRouter]);
 router.use('/updatework', UpdateWorkRouter);
+router.use('/bosswork', BossPageRouter);
 
 // router.use('/posts', postsRouter);
 router.use('/signup', signupRouter);

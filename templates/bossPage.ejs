@@ -76,27 +76,35 @@
           <!--        여기 부분에 들어갈 데이터들-->
           <% for(let i =0; i< datas.length; i++){ %>
           <tr>
+            <% if (datas[i].name) {%>
             <td style="width: 10%"><%= datas[i].name %></td>
+            <%}%>
+            <% if (datas[i].address) {%>
             <td style="width: 10%"><%= datas[i].address %></td>
+            <%}%>
+            <% if (datas[i].img) {%>
             <td class="tdimg" id="img<%=i%>" onmouseover="imgshow('img<%=i%>')" onmouseleave="imgdrop()">
               <%if(datas[i].img.length >0){%>
               이미지 보기
               <img style="display: none; position:absolute; width: 500px; height:500px; top:50%;left:50%;z-index: 9999; transform: translate(-25%,-50%)" src="http://<%=datas[i].img%>" alt="이미지입니다.">
-              <%}else{%>
-
               <%}%>
-          </td>
-            <td style="width: 30%"><%= datas[i].userWanted %></td>
-            <td style="width: 20%">
-              <%=
-              datas[i].createdAt.toISOString().substring(0,10).replaceAll("-",".")
-              %>
             </td>
-            <% if( datas[i].status === "배송 완료" ||datas[i].status === "리뷰 확인") { %>
+            <%}%>
+            <% if (datas[i].userWanted) {%>
+            <td style="width: 30%"><%= datas[i].userWanted %></td>
+            <%}%>
+            <% if(datas[i].createdAt) {%>
+            <td style="width: 20%">
+              <%= datas[i].createdAt.toISOString().substring(0,10).replaceAll("-",".") %>
+              </td>
+              <%}%>
+              <% if (datas[i].status) {%>
+            <% if( datas[i].status === "배송 완료" ||datas[i].status === "리뷰 확인" || !datas[i].status) { %>
               <td style="width: 20%"><%= datas[i].status %></td>
               <% } else {%>
                 <td style="width: 20%"><%= datas[i].status %><button style="margin-left:1rem" class="status" value="<%= datas[i].status %>, <%= datas[i].workId %>">업데이트</button></td>
               <% }%>
+              <%}%>
           </tr>
           <% } %>
         </table>
