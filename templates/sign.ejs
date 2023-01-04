@@ -1,119 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Login</title>
     <!--    BootStrap Library-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
 
     <!--    JQuery-->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  </head>
+  <style></style>
+  <script>
+    function signUserEvent() {
+      const userType = 1;
+      const email = $('#email').val();
+      const phoneNumber = $('#phoneNumber').val();
+      const password = $('#password').val();
+      const name = $('#name').val();
+      const address = $('#address').val();
+      const point = 1000000;
 
-</head>
-<style>
+      console.log(userType, email, phoneNumber, password, name, address, point);
 
-
-</style>
-<script>
-    function signUserEvent(){
-        const userType = 1;
-        const email = $('#email').val();
-        const phoneNumber = $('#phoneNumber').val();
-        const password = $('#password').val();
-        const name = $('#name').val();
-        const address = $('#address').val();
-        const point = 1000000;
-
-        console.log(userType, email, phoneNumber, password, name, address, point);
-
-
-        $.ajax({
-            type: "POST",
-            url: "/api/signup",
-            data: {userType, email, phoneNumber, password, name, address, point},
-            success: function (response) {
-                location.href = "login"
-                alert("유저 회원가입 성공!")
-            },
-            error: function (error) {
-                alert(error.responseJSON.errorMessage);
-            },
-        });
+      $.ajax({
+        type: 'POST',
+        url: '/api/signup',
+        data: { userType, email, phoneNumber, password, name, address, point },
+        success: function (response) {
+          location.href = 'login';
+          alert('유저 회원가입 성공!');
+        },
+        error: function (error) {
+          alert(error.responseJSON.errorMessage);
+        },
+      });
     }
 
-    function signBossEvent(){
-        const userType = 0;
-        const email = $('#email').val();
-        const phoneNumber = $('#phoneNumber').val();
-        const password = $('#password').val();
-        const name = $('#name').val();
-        const address = $('#address').val();
-        const point = 0;
+    function signBossEvent() {
+      const userType = 0;
+      const email = $('#email').val();
+      const phoneNumber = $('#phoneNumber').val();
+      const password = $('#password').val();
+      const name = $('#name').val();
+      const address = $('#address').val();
+      const point = 0;
 
-        console.log(userType, email, phoneNumber, password, name, address, point);
+      console.log(userType, email, phoneNumber, password, name, address, point);
 
-        $.ajax({
-            type: "POST",
-            url: "/api/signup",
-            data: {userType, email, phoneNumber, password, name, address, point},
-            success: function (response) {
-                location.href = "login"
-                alert("사장님 회원가입 성공!")
-            },
-            error: function (error) {
-                alert(error.responseJSON.errorMessage);
-            },
-        });
+      $.ajax({
+        type: 'POST',
+        url: '/api/signup',
+        data: { userType, email, phoneNumber, password, name, address, point },
+        success: function (response) {
+          location.href = 'login';
+          alert('사장님 회원가입 성공!');
+        },
+        error: function (error) {
+          alert(error.responseJSON.errorMessage);
+        },
+      });
     }
-
-</script>
-<body>
-
-<div>
-    <div class="card-body">
-
+  </script>
+  <body>
+    <div>
+      <div class="card-body">
         <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" aria-describedby="email"
-                   placeholder="Enter email">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            aria-describedby="email"
+            placeholder="Enter email"
+          />
         </div>
 
         <div class="form-group">
-            <label for="phoneNumber">PhoneNumber</label>
-            <input type="phoneNumber" class="form-control" id="phoneNumber" aria-describedby="phoneNumber"
-                   placeholder="000-0000-0000">
+          <label for="phoneNumber">PhoneNumber</label>
+          <input
+            type="phoneNumber"
+            class="form-control"
+            id="phoneNumber"
+            aria-describedby="phoneNumber"
+            placeholder="000-0000-0000"
+          />
         </div>
 
         <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="4~10자 영문, 숫자 조합">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="4~10자 영문, 숫자 조합"
+          />
         </div>
 
         <div class="form-group">
-            <label for="name">Name</label>
-            <input type="name" class="form-control" id="name" placeholder="name">
+          <label for="name">Name</label>
+          <input
+            type="name"
+            class="form-control"
+            id="name"
+            placeholder="name"
+          />
         </div>
 
         <div class="form-group">
-            <label for="address">Address</label>
-            <input type="address" class="form-control" id="address" placeholder="address">
+          <label for="address">Address</label>
+          <input
+            type="address"
+            class="form-control"
+            id="address"
+            placeholder="address"
+          />
         </div>
 
-        <button class="btn btn-outline-primary" onclick="signUserEvent()">유저</button>
-        <button class="btn btn-outline-primary" onclick="signBossEvent()">사장님</button>
+        <button class="btn btn-outline-primary" onclick="signUserEvent()">
+          유저
+        </button>
+        <button class="btn btn-outline-primary" onclick="signBossEvent()">
+          사장님
+        </button>
+      </div>
     </div>
-</div>
-
-
-</body>
+  </body>
 </html>

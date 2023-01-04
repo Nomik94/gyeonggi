@@ -8,8 +8,6 @@ app.use(cookieParser());
 const router = require('./routes');
 const express_render = require('./renders');
 
-app.use('/api', router);
-
 app.set('view engine', 'ejs');
 app.set('views', './templates');
 

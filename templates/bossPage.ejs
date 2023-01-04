@@ -124,10 +124,10 @@
   </body>
   <script>
     function exitPageToReview() {
-      location.href = '/api/review/1';
+      location.href = '/api/review/<%=data.userId%>';
     }
     function exitPageToLaundry() {
-      location.href = '/api/workshow';
+      location.href = '/api/workshow/<%=data.userId%>';
     }
   </script>
   <script>

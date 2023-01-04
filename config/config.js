@@ -3,7 +3,7 @@ module.exports = {
   development: {
     username: 'root',
     password: process.env.MYSQL_AWS_PASSWORD,
-    database: 'gyeonggi',
+    database: 'gyeonggi_db',
     host: process.env.MYSQL_AWS_HOST,
     dialect: 'mysql',
   },
