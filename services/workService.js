@@ -6,8 +6,8 @@ class WorkService {
     //레포지토리에 데이터 테이블은 넘겨줌
     workRepository = new WorkRepository(Work,User);
 
-    findAllWorks = async ()=>{
-        const allWork = await this.workRepository.findAllWork();
+    findAllWorks = async (userId)=>{
+        const allWork = await this.workRepository.findAllWork(userId);
         // 정렬 시간순
         allWork.sort((a,b)=>{
             return b.createdAt - a.createdAt;

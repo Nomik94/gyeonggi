@@ -6,14 +6,15 @@ class workController{
     workService = new WorkService(); //postService 에 할당
 
     getWorks = async (req,res,next)=>{
-        const works =await this.workService.findAllWorks();
+        const {userId} = res.locals.user;   //더미 데이터 id값
+        const works =await this.workService.findAllWorks(userId);
         res.render("userPage",{works:works});
     }
 
     //createWork를 실행한다.
     createWork =  async (req,res,next)=>{
         // 받아온 데이터 변수에 선언하기
-        const userId = 1;   //더미 데이터 id값
+        const {userId} =  res.locals.user;     //더미 데이터 id값
         let img = "";       //img는 값이 없을땐 "" 있을땐 해당값으로 변경 되기에 let으로 선언
         // 이미지 파일이 없을때
         if(req.file!==undefined){

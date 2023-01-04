@@ -6,12 +6,13 @@ class WorkRepository{
         this.userModel = userModel;
     }
 
-    findAllWork = async ()=>{
+    findAllWork = async (userId2)=>{
+        console.log("re",userId2);
         const works = await this.workModel.findAll({
-            where:{user_id:1},
+            where:{user_id:userId2},
         });
         const user = await this.userModel.findOne({
-            where:{userId:1}
+            where:{userId:userId2}
         });
         const workss = [];
         for(let i =0; i<works.length; i++){
