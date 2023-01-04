@@ -18,10 +18,12 @@ class UserRepository {
         return findUser;
     }
 
-    findByPk = async(userId) => {
-        const user = await User.findByPk(userId);
-
-        return user;
+    findAllUser = async(name) => {
+        const users = await User.findAll({
+            where: { name }
+        });
+        
+        return users;
     }
 
 }

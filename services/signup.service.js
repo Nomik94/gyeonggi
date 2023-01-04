@@ -19,6 +19,22 @@ class SignupService {
         };
     }
 
+    findAllUser = async(name) => {
+        const findUsesrData = await this.userRepository.findAllUser(name);
+
+        return findUsesrData.map(user => {
+            return {
+                userId: user.userId,
+                email : user.email,
+                phoneNumber: user.phoneNumber,
+                name: user.name,
+                address: user.address,
+                createdAt: user.createdAt,
+                updatedAt: user.updatedAt,
+            }
+        });
+    }
+
 }
 
 
