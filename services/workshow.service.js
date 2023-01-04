@@ -6,6 +6,7 @@ class WorkShowService {
 
   findAllWork = async () => {
     const allWork = await this.workShowRepository.findAllWork();
+    console.log("allWork", allWork);
     for (let i = 0; i < allWork.length; i++) {
       if (allWork[i].status === 0) {
         allWork[i].status = '대기 중';
