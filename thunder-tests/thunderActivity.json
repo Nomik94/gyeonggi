@@ -22,12 +22,12 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2023-01-02T09:00:43.225Z",
-    "modified": "2023-01-02T11:44:11.470Z",
+    "modified": "2023-01-04T02:55:19.003Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": " {\n      \"workId\":\"1\",\n      \"status\":\"2\"\n    }",
+      "raw": " {\n      \"workId\":\"1\",\n      \"status\":\"대기 중\"\n    }",
       "form": []
     },
     "tests": []
