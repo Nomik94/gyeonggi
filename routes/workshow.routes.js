@@ -5,9 +5,5 @@ const WorkShowController = require('../controllers/workshow.controller');
 const workShowController = new WorkShowController();
 
 router.get('/', workShowController.getWork);
-router.get(
-  '/bosswork/:userId',
-  authMiddleware,
-  workShowController.getStartWork
-);
+router.get('/bosswork', authMiddleware, workShowController.getStartWork);
 module.exports = router;

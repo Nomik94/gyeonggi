@@ -9,7 +9,7 @@ class WorkShowController {
     res.status(200).json({ data: WorkShow });
   };
   getStartWork = async (req, res, next) => {
-    const { userId } = req.params;
+    const userId = res.locals.user.userId;
     const startWorkShow = await this.workShowService.findStartWork(userId);
     console.log(startWorkShow);
     res.render('bossPage', { datas: startWorkShow });
