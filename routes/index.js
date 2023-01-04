@@ -1,4 +1,3 @@
-// api/를 통과하는 router
 const express = require('express');
 const router = express.Router();
 
