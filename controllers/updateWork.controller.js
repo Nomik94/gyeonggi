@@ -6,7 +6,7 @@ class UpdateWorkController {
   updateWork = async (req, res, next) => {
     const userId = res.locals.user.userId;
     const { workId, status } = req.body;
-    const updateWork = await this.updateWorkService.updateWork(workId, status);
+    const updateWork = await this.updateWorkService.updateWork(workId, status, userId );
     if (updateWork === 0) {
       res.status(200).json({ msg: '대기 중' });
     } else if (updateWork === 1) {

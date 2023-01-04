@@ -37,7 +37,7 @@
         url: '/api/updatework',
         data: {workId, status}
       }).then(() => {
-        window.location.reload()
+        location.href = '/api/bosswork';
       })
     })
   }
@@ -84,7 +84,7 @@
             <th>주소</th>
             <th>이미지</th>
             <th>요구사항</th>
-            <th>시간</th>
+            <th>날짜</th>
             <th>상태</th>
           </tr>
           <!--        여기 부분에 들어갈 데이터들-->
@@ -106,7 +106,7 @@
             datas[i].createdAt.toISOString().substring(0,10).replaceAll("-",".")
             %>
           </td>
-            <td style="width: 20%"><%= datas[i].status %><button class = "status" value="<%= datas[i].workId %>, <%= datas[i].status %>" type="button">수락</button></td>
+            <td style="width: 20%"><%= datas[i].status %><button style="margin-left:1rem" class = "status" value="<%= datas[i].workId %>, <%= datas[i].status %>" type="button">수락</button></td>
           </tr>
           <% } %>
         </table>

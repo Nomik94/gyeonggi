@@ -3,9 +3,9 @@ class UpdateWorkRepository {
     this.UpdateWorkModel = UpdateWorkModel;
     this.userModel = UserModel;
   }
-  updateWork = async (workId, status) => {
+  updateWork = async (workId, status, userId) => {
     let stt = parseInt(status) + 1;
-    await this.UpdateWorkModel.update({ status: stt }, { where: { workId } });
+    await this.UpdateWorkModel.update({ status: stt, boss_id: userId }, { where: { workId } });
     const updateWork = stt;
     if (status === 3) {
       const user = await this.userModel.findByPk(1);

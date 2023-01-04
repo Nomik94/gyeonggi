@@ -5,7 +5,7 @@ const { User } = require('../models');
 class UpdateWorkService {
   workShowRepository = new UpdateWorkRepository(Work, User);
 
-  updateWork = async (workId, status) => {
+  updateWork = async (workId, status, userId) => {
     if (status === '대기 중') {
       status = 0;
     } else if (status === '수거 중') {
@@ -19,7 +19,7 @@ class UpdateWorkService {
     } else if (status === '리뷰 확인') {
       status = 5;
     }
-    const updateWork = await this.workShowRepository.updateWork(workId, status);
+    const updateWork = await this.workShowRepository.updateWork(workId, status, userId);
     return updateWork;
   };
 }
