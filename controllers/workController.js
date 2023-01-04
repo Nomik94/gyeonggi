@@ -1,6 +1,5 @@
 // 서비스 가져오기
 const WorkService = require("../services/workService");
-const {render} = require("ejs");
 
 // 클래스 생성
 class workController{
@@ -25,7 +24,6 @@ class workController{
 
         // createWorkDate = workService의 리턴 값이므로 workService의createWork에(userId,img,needs) 값을 가지고 가자.
         const createWorkData = await this.workService.createWork(userId,img,needs);
-        console.log("createWorkData Con",createWorkData);
 
         // 생성은 스테이터스 201
         res.redirect("/api/laundry");
