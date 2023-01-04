@@ -1,3 +1,5 @@
+const { Review } = require('../models');
+
 class BossReviewRepository {
   constructor(bossModel) {
     this.bossModel = bossModel;
@@ -5,11 +7,22 @@ class BossReviewRepository {
   findAllReview = async (userId) => {
     try {
       const reviews = await this.bossModel.findAll({
-        where: { user_id: userId },
-        attributes: ['star', 'content', 'createdAt'],
-        order: [['createdAt', 'desc']],
+        attributes: ['Review.star', 'Review.content', 'Review.createdAt'],
+        order: [['Review.createdAt', 'desc']],
+        include: [
+          {
+            model: Work,
+            attributes: [],
+            where: { boss_id: userId },
+            include: [
+              {
+                model: Review,
+                attributes: [],
+              },
+            ],
+          },
+        ],
       });
-
       return reviews;
     } catch (error) {
       return error;

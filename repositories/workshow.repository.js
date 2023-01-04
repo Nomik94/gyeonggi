@@ -11,6 +11,7 @@ class WorkShowRepository {
       where: { status: 0 },
       raw: true,
       attributes: [
+        'workId',
         'createdAt',
         'status',
         'img',

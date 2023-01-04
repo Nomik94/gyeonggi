@@ -6,11 +6,17 @@ class WorkShowService {
 
   findAllWork = async () => {
     const allWork = await this.workShowRepository.findAllWork();
+    for (let i = 0; i < allWork.length; i++) {
+      if (allWork[i].status === 0) {
+        allWork[i].status = '대기 중';
+      }
+    }
     allWork.sort((a, b) => {
       return b.createdAt - a.createdAt;
     });
     return allWork.map((Works) => {
       return {
+        workId: Works.workId,
         name: Works.name,
         address: Works.address,
         status: Works.status,
@@ -33,6 +39,8 @@ class WorkShowService {
         allStartWork[i].status = '배송 중';
       } else if (allStartWork[i].status === 4) {
         allStartWork[i].status = '배송 완료';
+      } else if (allStartWork[i].status === 5) {
+        allStartWork[i].status = '리뷰 확인';
       }
     }
 

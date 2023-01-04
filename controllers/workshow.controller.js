@@ -6,12 +6,12 @@ class WorkShowController {
   getWork = async (req, res, next) => {
     const WorkShow = await this.workShowService.findAllWork();
 
-    res.status(200).json({ data: WorkShow });
+    res.render('workShow', { datas: WorkShow });
   };
   getStartWork = async (req, res, next) => {
     const userId = res.locals.user.userId;
     const startWorkShow = await this.workShowService.findStartWork(userId);
-    console.log(startWorkShow);
+
     res.render('bossPage', { datas: startWorkShow });
   };
 }

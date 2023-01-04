@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>세탁물 신청 조회 페이지</title>
+  </head>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!--    JQuery-->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<!--    JQuery Cookie-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<!--    BootStrap Library-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Jua&family=Noto+Serif+KR:wght@200&display=Gowun+Dodum&display=swap"
+      rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const status_btn = document.getElementsByClassName('status')
+
+  for(let i = 0; i < status_btn.length; i++) {
+    status_btn[i].addEventListener('click', () => {
+      const data = status_btn[i].value
+      console.log(data)
+      const workId = data.split(', ')[0]
+      const status = data.split(', ')[1]
+      console.log(status);
+      console.log(workId);
+      axios({
+        method: 'post',
+        url: '/api/updatework',
+        data: {workId, status}
+      }).then(() => {
+        window.location.reload()
+      })
+    })
+  }
+})
+</script>
+
+  <style>
+    tr,
+    td,
+    th {
+      border: 1px solid #000;
+    }
+  </style>
+  <body>
+    <div class="container-fluid">
+      <div class="container" style="margin-top: 20px">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <img
+              src="https://www.gg.go.kr/site/gg/common/assets/images/img-header-logo.jpg"
+              alt="logo"
+            />
+            <h1
+              style="
+                display: inline-block;
+                text-align: center;
+                margin-top: 50px;
+                margin-bottom: 50px;
+              "
+            >
+              경기도민
+            </h1>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+      <div class="container">
+        <h2>세탁물 신청 조회 페이지</h2>
+        <hr />
+        <table style="width: 100%; text-align: center; margin-top: 1.5rem">
+          <tr>
+            <th>이름</th>
+            <th>주소</th>
+            <th>이미지</th>
+            <th>요구사항</th>
+            <th>시간</th>
+            <th>상태</th>
+          </tr>
+          <!--        여기 부분에 들어갈 데이터들-->
+          <% for(let i =0; i< datas.length; i++){ %>
+          <tr>
+            <td style="width: 10%"><%= datas[i].name %></td>
+            <td style="width: 10%"><%= datas[i].address %></td>
+            <td class="tdimg" id="img<%=i%>" onmouseover="imgshow('img<%=i%>')" onmouseleave="imgdrop()">
+              <%if(datas[i].img.length >0){%>
+              이미지 보기
+              <img style="display: none; position:absolute; width: 500px; height:500px; top:50%;left:50%;z-index: 9999; transform: translate(-25%,-50%)" src="http://<%=datas[i].img%>" alt="이미지입니다.">
+              <%}else{%>
+
+              <%}%>
+          </td>
+          <td style="width: 30%"><%= datas[i].userWanted %></td>
+          <td style="width: 20%">
+            <%=
+            datas[i].createdAt.toISOString().substring(0,10).replaceAll("-",".")
+            %>
+          </td>
+            <td style="width: 20%"><%= datas[i].status %><button class = "status" value="<%= datas[i].workId %>, <%= datas[i].status %>" type="button">수락</button></td>
+          </tr>
+          <% } %>
+        </table>
+      <div class="container" style="text-align: center">
+        <button
+          type="button"
+          style="
+            width: 200px;
+            height: 60px;
+            margin-top: 40px;
+            margin-right: 20px;
+          "
+          class="btn btn-primary"
+          onclick="exitPageToReview()"
+        >
+          메인 페이지 이동
+        </button>
+      </div>
+    </div>
+  </body>
+  <script>
+    function exitPageToReview() {
+      location.href = '/api/workshow/bosswork';
+    }
+  </script>
+</html>
