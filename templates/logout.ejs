@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>Login</title>
+    <!--    JQuery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
+    <!--    JQuery Cookie-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <!--    BootStrap Library-->
     <link
       rel="stylesheet"
@@ -27,11 +31,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <!--    JQuery-->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-    <!--    JQuery Cookie-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
   </head>
   <script>
     $(document).ready(function () {
@@ -47,20 +47,15 @@
 
       window.location.href = '/api/login';
     }
-  </script>
-  <body>
-    <div>
-      <div class="post-body">
-        <button
-          id="btn_logout"
-          type="button"
-          class="btn btn-dark"
-          onclick="logout()"
-          style="display: none"
-        >
-          로그아웃
-        </button>
-      </div>
+
+</script>
+<body>
+
+<div>
+
+
+    <div class="post-body">
+        <button id="btn_logout" type="button" class="btn btn-dark" onclick="logout()" style="display: none">로그아웃</button>
     </div>
   </body>
 </html>

@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>Login</title>
+    <!--    JQuery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <!--    JQuery Cookie-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <!--    BootStrap Library-->
     <link
       rel="stylesheet"
@@ -25,9 +30,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-
-    <!--    JQuery-->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   </head>
   <style></style>
   <script>
@@ -39,9 +41,7 @@
       const name = $('#name').val();
       const address = $('#address').val();
       const point = 1000000;
-
       console.log(userType, email, phoneNumber, password, name, address, point);
-
       $.ajax({
         type: 'POST',
         url: '/api/signup',
@@ -55,7 +55,6 @@
         },
       });
     }
-
     function signBossEvent() {
       const userType = 0;
       const email = $('#email').val();
@@ -64,9 +63,7 @@
       const name = $('#name').val();
       const address = $('#address').val();
       const point = 0;
-
       console.log(userType, email, phoneNumber, password, name, address, point);
-
       $.ajax({
         type: 'POST',
         url: '/api/signup',
@@ -83,6 +80,28 @@
   </script>
   <body>
     <div>
+      <div class="container" style="margin-top: 20px">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <img
+              src="https://www.gg.go.kr/site/gg/common/assets/images/img-header-logo.jpg"
+              alt="logo"
+            />
+            <h1
+              style="
+                display: inline-block;
+                text-align: center;
+                margin-top: 50px;
+                margin-bottom: 50px;
+              "
+            >
+              경기도민
+            </h1>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
       <div class="card-body">
         <div class="form-group">
           <label for="email">Email</label>
