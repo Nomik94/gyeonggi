@@ -1,4 +1,5 @@
 // controllers/login.controller.js
+const crypto = require('crypto');
 
 const LoginService = require('../services/login.service');
 
@@ -9,7 +10,9 @@ class LoginController {
     try {
       const { email, password } = req.body;
 
-      const userId = await this.loginService.findOne(email, password);
+      const hashPassword = crypto.createHash('sha512').update(req.body.password + 10).digest('hex');
+
+      const userId = await this.loginService.findOne(email, hashPassword);
 
       const token = await this.loginService.issueToken(userId);
 
