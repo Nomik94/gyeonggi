@@ -7,7 +7,7 @@ class BossReviewController {
     const { userId } = req.params;
     const reviews = await this.BossReviewService.findAllReviews(userId);
 
-    res.render('bossReview', { reviews: reviews });
+    res.status(200).render('bossReview', { reviews: reviews });
   };
 }
 

@@ -1,11 +1,13 @@
 const BossReviewService = require('../../services/bossReview.service');
 
-let mockBossReviewService = {
+let mockBossReviewRepository = {
   findAllReview: jest.fn(),
 };
 
+let mockUserId = 1;
+
 let bossReviewService = new BossReviewService();
-bossReviewService.BossReviewRepository = mockBossReviewService;
+bossReviewService.bossReviewRepository = mockBossReviewRepository;
 
 describe('Boss Review Service Unit Test', () => {
   beforeEach(() => {
@@ -26,16 +28,18 @@ describe('Boss Review Service Unit Test', () => {
       },
     ];
 
-    mockBossReviewService.findAllReview = jest.fn(() => {
+    mockBossReviewRepository.findAllReview = jest.fn(() => {
       return findAllReviewReturnValue;
     });
 
-    const allReview = await bossReviewService.findAllReview();
+    const allReview = await bossReviewService.findAllReviews(mockUserId);
 
     expect(allReview).toEqual(
       findAllReviewReturnValue.sort((a, b) => {
         return b.createdAt - a.createdAt;
       })
     );
+
+    expect(mockBossReviewRepository.findAllReview).toHaveBeenCalledTimes(1);
   });
 });

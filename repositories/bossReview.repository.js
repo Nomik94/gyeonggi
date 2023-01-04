@@ -1,5 +1,3 @@
-const { Review } = require('../models');
-
 class BossReviewRepository {
   constructor(bossModel) {
     this.bossModel = bossModel;
@@ -9,6 +7,7 @@ class BossReviewRepository {
       const reviews = await this.bossModel.findAll({
         where: { user_id: userId },
         attributes: ['star', 'content', 'createdAt'],
+        order: [['createdAt', 'desc']],
       });
 
       return reviews;

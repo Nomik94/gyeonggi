@@ -1,7 +1,7 @@
 const BossReviewController = require('../../controllers/bossReview.controller');
 
 let mockReviewService = {
-  findAllReview: jest.fn(),
+  findAllReviews: jest.fn(),
 };
 
 let mockRequest = {
@@ -10,7 +10,7 @@ let mockRequest = {
 
 let mockResponse = {
   status: jest.fn(),
-  json: jest.fn(),
+  render: jest.fn(),
 };
 
 let bossReviewController = new BossReviewController();
@@ -40,17 +40,17 @@ describe('Boss Review Controller Unit Test', () => {
       },
     ];
 
-    mockReviewService.findAllReview = jest.fn(() => reviewReturnValue);
+    mockReviewService.findAllReviews = jest.fn(() => reviewReturnValue);
 
     await bossReviewController.getReviews(mockRequest, mockResponse);
 
-    expect(mockReviewService.findAllReview).toHaveBeenCalledTimes(1);
+    expect(mockReviewService.findAllReviews).toHaveBeenCalledTimes(1);
 
     expect(mockResponse.status).toHaveBeenCalledTimes(1);
     expect(mockResponse.status).toHaveBeenCalledWith(200);
 
-    expect(mockResponse.json).toHaveBeenCalledWith({
-      data: reviewReturnValue,
+    expect(mockResponse.render).toHaveBeenCalledWith('bossReview', {
+      reviews: reviewReturnValue,
     });
   });
 });
