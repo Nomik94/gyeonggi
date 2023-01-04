@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon app",
     "test": "jest --forceExit",
     "test:silent": "jest --silent --forceExit",
     "test:coverage": "jest --coverage --forceExit",
