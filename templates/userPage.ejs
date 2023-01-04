@@ -13,31 +13,47 @@
         crossorigin="anonymous"></script>
 <style>
     tr, td, th {border:1px solid #000;}
+
+    .show{display:block}
 </style>
 <script>
-
+    let trid;
+    let imgtag
     function modalData(){
-        let my_data = event.currentTarget.parentElement.parentElement.id;
-        console.log(my_data);
+        trid = event.currentTarget.parentElement.parentElement.id;
+    }
+
+    function imgshow(imgid){
+        imgtag = $("#"+imgid+" img")
+        imgtag.css("display","block");
+    }
+    function imgdrop(){
+        imgtag.css("display","none");
     }
 
     function review_write(){
+
         let star = $("#star").val();
+        if(star == 100){
+            alert("평점을 선택은 필수 입니다.");
+            return;
+        }
         let content = $("#content").val();
-        console.log(star);
-        console.log(content);
-        // $.ajax({
-        //     type: "POST",
-        //     url: "/api/laundry",
-        //     data: {
-        //         needs: needs,
-        //         myimg: myimg,
-        //     },
-        //     success: function (response) {
-        //         alert(response["msg"]);
-        //         window.location.replace("/posts");
-        //     }
-        // });
+        let workId = trid.replaceAll("tr","");
+        $.ajax({
+            type: "POST",
+            url: "/api/review",
+            data: {
+                star:star,
+                content:content,
+                workId:workId
+            },
+            success: function (response) {
+                alert(response["msg"]);
+                console.log("100점")
+                window.location.reload();
+            }
+        });
     }
 </script>
 
@@ -70,11 +86,19 @@
             </tr>
             <!--        여기 부분에 들어갈 데이터들-->
             <%for (let i=0; i<works.length; i++){%>
-            <tr id="tr<%=i%>">
+            <tr id="tr<%=works[i].workId%>">
                 <td><%=works[i].name%></td>
                 <td><%=works[i].phone%></td>
                 <td><%=works[i].address%></td>
-                <td><%=works[i].img%></td>
+                <td class="tdimg" id="img<%=i%>" onmouseover="imgshow('img<%=i%>')" onmouseleave="imgdrop()">
+                    <%if(works[i].img.length >0){%>
+                    이미지 보기
+                    <img style="display: none; position:absolute; width: 500px; height:500px; top:50%;left:50%;z-index: 9999; transform: translate(-25%,-50%)" src="http://<%=works[i].img%>" alt="이미지입니다.">
+                    <%}else{%>
+
+                    <%}%>
+                </td>
+
                 <td><%=works[i].need%></td>
                 <%if (works[i].status ===0){%>
                 <td>대기 중</td>
@@ -86,8 +110,16 @@
                     <td>배송 중</td>
                 <%}else if (works[i].status ===4){%>
                     <td>배송 완료</td>
+                <%}else if (works[i].status ===5){%>
+                    <td>리뷰 작성 완료</td>
                 <%}%>
-                <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="modalData()">리뷰 작성하기</button></td>
+                <td>
+                    <%if (works[i].status ===4){%>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="modalData()">리뷰 작성하기</button>
+                    <%}else{%>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="modalData()"disabled>리뷰 작성하기</button>
+                        <%}%>
+                </td>
             </tr>
             <%}%>
         </table>
@@ -108,7 +140,7 @@
             </div>
             <div class="modal-body">
                 <select id="star" class="form-select" aria-label="Default select example">
-                    <option selected>평점을 선택해 주세요.</option>
+                    <option selected value="100">평점을 선택해 주세요.</option>
                     <option value="1">⭐️</option>
                     <option value="2">⭐️⭐️</option>
                     <option value="3">⭐️⭐️⭐️</option>

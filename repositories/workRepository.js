@@ -13,10 +13,9 @@ class WorkRepository{
         const user = await this.userModel.findOne({
             where:{userId:1}
         });
-        // console.log("works",works[0].dataValues)
-        // console.log("user",user.dataValues.name)
         const workss = [];
         for(let i =0; i<works.length; i++){
+            const workId = works[i].dataValues.workId;
             const name = user.dataValues.name;
             const phone = user.dataValues.phoneNumber;
             const address = user.dataValues.address;
@@ -24,6 +23,7 @@ class WorkRepository{
             const need = works[i].dataValues.userWanted;
             const status = works[i].dataValues.status;
             workss.push({
+                workId:workId,
                 name:name,
                 phone:phone,
                 address:address,

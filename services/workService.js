@@ -15,6 +15,7 @@ class WorkService {
 
         return allWork.map((work)=>{
             return {
+                workId:work.workId,
                 name: work.name,
                 phone:work.phone,
                 address:work.address,
