@@ -8,10 +8,9 @@ class UpdateWorkRepository {
     }
     updateWork = async (workId, status) => {
         console.log(workId, status);
-        let stt = status+1
-        await this.UpdateWorkModel.update({status:stt},{where:{workId}});
-        const updateWork = stt
-        console.log(stt)
+        status += 1
+        await this.UpdateWorkModel.update({status},{where:{workId}});
+        const updateWork = status;
         return updateWork;
     }
 }
