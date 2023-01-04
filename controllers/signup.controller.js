@@ -8,7 +8,7 @@ class SignupController {
     postSignup = async (req, res, next) => {
         try{
             const { userType, email, phoneNumber, password, name, address, point } = req.body;
-
+            console.log(userType,"아", email,"아", phoneNumber,"아", password,"아", name,"아", address,"아", point );
             const re_email = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
             const re_phoneNumber = /^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/;
             const re_password = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{4,10}$/; //  4 ~ 10자 영문, 숫자 조합
@@ -19,35 +19,35 @@ class SignupController {
                 });
                 return;
             }
-    
+            console.log(1);
             if(phoneNumber.search(re_phoneNumber) === -1){
                 res.status(412).send({
                     errorMessage: "핸드폰 번호를 숫자, -을 포함한 휴대전화 형식에 맞게 입력해주세요."
                 });
                 return;
             }
-    
+            console.log(2);
             if(password.search(re_password) === -1){
                 res.status(412).send({
                     errorMessage: "비밀번호를 4~10자 영문, 숫자 조합으로 입력해주세요."
                 });
                 return;
             }
-    
+            console.log(3);
             if(password.search(name) !== -1){
                 res.status(412).send({
                     errorMessage: "비밀번호에 이름이 포함되어 있습니다."
                 });
                 return;
             }
-
+            console.log(4);
             if(!address){
                 res.status(412).send({
                     errorMessage: "주소를 입력해주세요."
                 });
                 return;
             }
-    
+            console.log(5);
             const user = await this.signupService.findAllUser(name);
     
             if(user.length){
@@ -56,9 +56,9 @@ class SignupController {
                 });
                 return;
             }
-    
+            console.log(6);
             const createUserData = await this.signupService.createUser(userType, email, phoneNumber, password, name, address, point);
-    
+            console.log(7);
             res.status(200).json({ result: "success", data : createUserData});
         } catch(err){
             res.status(400).json({

@@ -1,7 +1,7 @@
 require("dotenv").config();
 module.exports =  {
     "development": {
-      "username": "root",
+      "username": "lee",
       "password": process.env.MYSQL_AWS_PASSWORD,
       "database": "gyeonggi_db",
       "host": process.env.MYSQL_AWS_HOST,

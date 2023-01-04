@@ -22,6 +22,6 @@ router.get("/users/me", authMiddleware, async (req, res) => {
 
 });
 
-router.use('/api', workRouter,reviewsRouter);
+router.use('/', workRouter,reviewsRouter);
 
 module.exports = router;
