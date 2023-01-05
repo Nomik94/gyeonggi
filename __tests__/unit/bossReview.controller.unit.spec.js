@@ -4,13 +4,10 @@ let mockReviewService = {
   findAllReviews: jest.fn(),
 };
 
-let mockRequest = {
-  params: { userId: 2 },
-};
-
 let mockResponse = {
   status: jest.fn(),
   render: jest.fn(),
+  locals: 2,
 };
 
 let bossReviewController = new BossReviewController();
@@ -42,12 +39,13 @@ describe('Boss Review Controller Unit Test', () => {
 
     mockReviewService.findAllReviews = jest.fn(() => reviewReturnValue);
 
-    await bossReviewController.getReviews(mockRequest, mockResponse);
+    await bossReviewController.getReviews(mockResponse);
 
     expect(mockReviewService.findAllReviews).toHaveBeenCalledTimes(1);
 
     expect(mockResponse.status).toHaveBeenCalledTimes(1);
     expect(mockResponse.status).toHaveBeenCalledWith(200);
+    expect(mockResponse.locals).toHaveBeenCalledWith(2);
 
     expect(mockResponse.render).toHaveBeenCalledWith('bossReview', {
       reviews: reviewReturnValue,
