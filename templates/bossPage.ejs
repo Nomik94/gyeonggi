@@ -75,7 +75,7 @@
             <th>상태</th>
           </tr>
           <!--        여기 부분에 들어갈 데이터들-->
-          <% for(let i =0; i< datas.length; i++){ %>
+          <% for(let i =1; i< datas.length; i++){ %>
           <tr>
             <% if (datas[i].name) {%>
             <td style="width: 5%"><%= datas[i].name %></td>
@@ -92,10 +92,11 @@
               이미지 보기
               <img style="display: none; position:absolute; width: 500px; height:500px; top:50%;left:50%;z-index: 9999; transform: translate(-25%,-50%)" src="http://<%=datas[i].img%>" alt="이미지입니다.">
               <%}else{%>
+
               <%}%>
             </td>
             <%}else{%>
-            
+              <td></td>
             <%}%>  
             <% if (datas[i].userWanted) {%>
             <td style="width: 30%"><%= datas[i].userWanted %></td>
