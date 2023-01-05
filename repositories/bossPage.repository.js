@@ -45,7 +45,7 @@ class BossPageRepository {
       const img = works[i].img;
       const userWanted = works[i].userWanted;
       const createdAt = works[i].createdAt;
-      const user = await User.findOne({
+      const user = await this.BossModel.findOne({
         where: { userId: works[i].user_id },
       });
       const name = user.name;
