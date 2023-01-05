@@ -6,14 +6,16 @@ class WorkRepository {
   }
 
   findAllWork = async (userId2) => {
-    console.log('re', userId2);
     const works = await this.workModel.findAll({
       where: { user_id: userId2 },
     });
     const user = await this.userModel.findOne({
       where: { userId: userId2 },
     });
+
     const workss = [];
+    const point = user.dataValues.point;
+    workss.push({ point: point });
     for (let i = 0; i < works.length; i++) {
       const workId = works[i].dataValues.workId;
       const name = user.dataValues.name;

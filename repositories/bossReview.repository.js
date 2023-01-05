@@ -17,7 +17,7 @@ class BossReviewRepository {
           },
         ],
       });
-      console.log(reviews);
+
       return reviews;
     } catch (error) {
       return error;

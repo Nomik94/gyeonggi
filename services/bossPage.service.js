@@ -29,6 +29,7 @@ class BossPageService {
         workId: StartWorks.workId,
         name: StartWorks.name,
         address: StartWorks.address,
+        phoneNumber: StartWorks.phoneNumber,
         status: StartWorks.status,
         img: StartWorks.img,
         userWanted: StartWorks.userWanted,

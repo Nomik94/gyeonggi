@@ -98,8 +98,8 @@ function imgshow(imgid){
           <!--        여기 부분에 들어갈 데이터들-->
           <% for(let i =0; i< datas.length; i++){ %>
           <tr>
-            <td style="width: 10%"><%= datas[i].name %></td>
-            <td style="width: 10%"><%= datas[i].address %></td>
+            <td style="width: 5%"><%= datas[i].name %></td>
+            <td style="width: 20%"><%= datas[i].address %></td>
             <td style="width: 10%"><%= datas[i].phoneNumber %></td>
             <% if (datas[i].img) {%>
               <td class="tdimg" id="img<%=i%>" onmouseover="imgshow('img<%=i%>')" onmouseleave="imgdrop()">
@@ -114,12 +114,12 @@ function imgshow(imgid){
                 <td></td>
                 <%}%>
           <td style="width: 30%"><%= datas[i].userWanted %></td>
-          <td style="width: 20%">
+          <td style="width: 10%">
             <%=
             datas[i].createdAt.toISOString().substring(0,10).replaceAll("-",".")
             %>
           </td>
-            <td style="width: 20%"><%= datas[i].status %><button style="margin-left:1rem" class = "status" value="<%= datas[i].workId %>, <%= datas[i].status %>" type="button">수락</button></td>
+            <td style="width: 15%"><%= datas[i].status %><button style="margin-left:1rem" class = "status" value="<%= datas[i].workId %>, <%= datas[i].status %>" type="button">수락</button></td>
           </tr>
           <% } %>
         </table>
