@@ -20,8 +20,8 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
   const status_btn = document.getElementsByClassName('status')
 
   for(let i = 0; i < status_btn.length; i++) {
@@ -42,6 +42,13 @@
     })
   }
 })
+function imgshow(imgid){
+        imgtag = $("#"+imgid+" img")
+        imgtag.css("display","block");
+    }
+    function imgdrop(){
+        imgtag.css("display","none");
+    }
 </script>
 
   <style>
@@ -82,6 +89,7 @@
           <tr>
             <th>이름</th>
             <th>주소</th>
+            <th>연락처</th>
             <th>이미지</th>
             <th>요구사항</th>
             <th>날짜</th>
@@ -92,14 +100,19 @@
           <tr>
             <td style="width: 10%"><%= datas[i].name %></td>
             <td style="width: 10%"><%= datas[i].address %></td>
-            <td class="tdimg" id="img<%=i%>" onmouseover="imgshow('img<%=i%>')" onmouseleave="imgdrop()">
-              <%if(datas[i].img.length >0){%>
-              이미지 보기
-              <img style="display: none; position:absolute; width: 500px; height:500px; top:50%;left:50%;z-index: 9999; transform: translate(-25%,-50%)" src="http://<%=datas[i].img%>" alt="이미지입니다.">
+            <td style="width: 10%"><%= datas[i].phoneNumber %></td>
+            <% if (datas[i].img) {%>
+              <td class="tdimg" id="img<%=i%>" onmouseover="imgshow('img<%=i%>')" onmouseleave="imgdrop()">
+                <%if(datas[i].img.length >0){%>
+                이미지 보기
+                <img style="display: none; position:absolute; width: 500px; height:500px; top:50%;left:50%;z-index: 9999; transform: translate(-25%,-50%)" src="http://<%=datas[i].img%>" alt="이미지입니다.">
+                <%}else{%>
+                  
+                <%}%>
+              </td>
               <%}else{%>
-
-              <%}%>
-          </td>
+                <td></td>
+                <%}%>
           <td style="width: 30%"><%= datas[i].userWanted %></td>
           <td style="width: 20%">
             <%=

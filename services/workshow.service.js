@@ -20,6 +20,7 @@ class WorkShowService {
         workId: Works.workId,
         name: Works.name,
         address: Works.address,
+        phoneNumber : Works.phoneNumber,
         status: Works.status,
         img: Works.img,
         userWanted: Works.userWanted,

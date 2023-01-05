@@ -8,13 +8,13 @@ class UpdateWorkRepository {
     await this.UpdateWorkModel.update({ status: stt, boss_id: userId }, { where: { workId } });
     const updateWork = stt;
     if (status === 3) {
-      const user = await this.userModel.findByPk(1);
+      const user = await this.userModel.findByPk(userId);
 
       await this.userModel.update(
         {
           point: user.point + 10000,
         },
-        { where: { userId: 1 } }
+        { where: { userId:userId } }
       );
     }
 

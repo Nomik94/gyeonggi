@@ -22,7 +22,7 @@ class WorkShowRepository {
     });
     console.log(Works)
     const worksList = []
-    for (let i = 0; i <Works.length; i++){
+    for (let i = 0; i < Works.length; i++){
         const workId1 = Works[i].workId
         const createdAt1 = Works[i].createdAt
         const status1 = Works[i].status
@@ -33,6 +33,7 @@ class WorkShowRepository {
         )
         const username = user.name
         const useraddress = user.address
+        const userphonenumber = user.phoneNumber
 
         worksList.push({
           workId : workId1,
@@ -41,7 +42,8 @@ class WorkShowRepository {
           img : img1,
           userWanted : userWanted1,
           name:username,
-          address:useraddress
+          address:useraddress,
+          phoneNumber:userphonenumber
         })
       }
       console.log(worksList)

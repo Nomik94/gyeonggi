@@ -4,15 +4,15 @@ const { User } = require("../models");
 
 class UserRepository {
 
-    createUser = async(userType, email, phoneNumber, password, name, address, point) => {
-        const createUserData = await User.create({ userType, email, phoneNumber, password, name, address, point });
+    createUser = async(userType, email, phoneNumber, hashPassword, name, address, point) => {
+        const createUserData = await User.create({ userType, email, phoneNumber, password:hashPassword, name, address, point });
 
         return createUserData;
     }
 
-    findOne = async(email, password) => {
+    findOne = async(email, hashPassword) => {
         const findUser = await User.findOne({
-            where: {email, password}
+            where: {email, password:hashPassword}
         });
 
         return findUser;
