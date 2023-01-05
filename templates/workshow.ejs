@@ -27,11 +27,8 @@
   for(let i = 0; i < status_btn.length; i++) {
     status_btn[i].addEventListener('click', () => {
       const data = status_btn[i].value
-      console.log(data)
       const workId = data.split(', ')[0]
       const status = data.split(', ')[1]
-      console.log(status);
-      console.log(workId);
       axios({
         method: 'post',
         url: '/api/updatework',
