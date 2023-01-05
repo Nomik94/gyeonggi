@@ -1,14 +1,22 @@
 <script>
   $(document).ready(function () {
-      // 토큰이 있을 경우 로그인 기능 hide & 페이지 이동
-      const token = $.cookie("token");
-      if (token) {
-          $('#btn_logout').show();
-      }
+    // 토큰이 있을 경우 로그인 기능 hide & 페이지 이동
+    const token = $.cookie('token');
+    if (token) {
+      $('#btn_logout').show();
+    }
   });
   function logout() {
-      $.removeCookie("token", { path: "/" });
-      window.location.href = '/api/login';
+    $.removeCookie('token', { path: '/' });
+    window.location.href = '/api/login';
   }
 </script>
-<button id="btn_logout" type="button" class="btn btn-dark" onclick="logout()" style="display: none">로그아웃</button>
+<button
+  id="btn_logout"
+  type="button"
+  class="btn btn-dark"
+  onclick="logout()"
+  style="display: none"
+>
+  로그아웃
+</button>
