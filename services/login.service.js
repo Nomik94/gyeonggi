@@ -7,8 +7,8 @@ const UserRepository = require('../repositories/users.repository');
 class LoginService {
     userRepository = new UserRepository();
 
-    findOne = async(email, password) => {
-        const findUser = await this.userRepository.findOne(email, password);
+    findOne = async(email, hashPassword) => {
+        const findUser = await this.userRepository.findOne(email, hashPassword);
 
         return{
             userId: findUser.userId

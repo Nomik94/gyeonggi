@@ -6,6 +6,7 @@ class WorkShowService {
 
   findAllWork = async () => {
     const allWork = await this.workShowRepository.findAllWork();
+    console.log("allWork", allWork);
     for (let i = 0; i < allWork.length; i++) {
       if (allWork[i].status === 0) {
         allWork[i].status = '대기 중';
@@ -19,6 +20,7 @@ class WorkShowService {
         workId: Works.workId,
         name: Works.name,
         address: Works.address,
+        phoneNumber : Works.phoneNumber,
         status: Works.status,
         img: Works.img,
         userWanted: Works.userWanted,

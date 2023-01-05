@@ -1,10 +1,10 @@
 // controllers/signup.controller.js
-
+const crypto = require('crypto');
 const SignupService = require('../services/signup.service');
 
 class SignupController {
   signupService = new SignupService();
-
+  
   postSignup = async (req, res, next) => {
     try {
       const { userType, email, phoneNumber, password, name, address, point } =
@@ -52,11 +52,13 @@ class SignupController {
         });
         return;
       }
+      const hashPassword = crypto.createHash('sha512').update(req.body.password + 10).digest('hex');
+
       const createUserData = await this.signupService.createUser(
         userType,
         email,
         phoneNumber,
-        password,
+        hashPassword,
         name,
         address,
         point

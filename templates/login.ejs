@@ -34,6 +34,21 @@
   </head>
   <style></style>
   <script>
+    if (document.cookie) {
+      $.ajax({
+        type: 'GET',
+        url: '/api/users/me',
+        data: {},
+        success: function (response) {
+          // alert(response.user.userType);
+          if (response.user.userType === 1) {
+            location.href = '/api/laundry'; // 사용자 페이지로 이동
+          } else if (response.user.userType === 0) {
+            location.href = '/api/bosswork'; // 사장 페이지로 이동
+          }
+        },
+      });
+    }
     let token;
     // 로그인 실행
     function loginEvent() {

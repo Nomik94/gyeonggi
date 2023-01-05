@@ -68,6 +68,7 @@
           <tr>
             <th>이름</th>
             <th>주소</th>
+            <th>연락처</th>
             <th>이미지</th>
             <th>요구사항</th>
             <th>날짜</th>
@@ -82,14 +83,20 @@
             <% if (datas[i].address) {%>
             <td style="width: 10%"><%= datas[i].address %></td>
             <%}%>
+            <% if (datas[i].phoneNumber) {%>
+            <td style="width: 10%"><%= datas[i].phoneNumber %></td>
+            <%}%>
             <% if (datas[i].img) {%>
             <td class="tdimg" id="img<%=i%>" onmouseover="imgshow('img<%=i%>')" onmouseleave="imgdrop()">
               <%if(datas[i].img.length >0){%>
               이미지 보기
               <img style="display: none; position:absolute; width: 500px; height:500px; top:50%;left:50%;z-index: 9999; transform: translate(-25%,-50%)" src="http://<%=datas[i].img%>" alt="이미지입니다.">
+              <%}else{%>
               <%}%>
             </td>
-            <%}%>
+            <%}else{%>
+              <td></td>
+            <%}%>  
             <% if (datas[i].userWanted) {%>
             <td style="width: 30%"><%= datas[i].userWanted %></td>
             <%}%>
