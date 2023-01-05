@@ -7,7 +7,6 @@ class BossReviewService {
   findAllReviews = async (userId) => {
     try {
       const allReview = await this.bossReviewRepository.findAllReview(userId);
-      console.log(allReview);
 
       return allReview.map((review) => {
         return {

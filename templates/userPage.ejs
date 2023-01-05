@@ -83,7 +83,14 @@
     <div class="container">
 
         <h2>세탁 서비스 신청 내역</h2>
+        <table style="width: 30%; text-align: center; margin-top: 1.5rem">
+            <tr>
+              <th style="width: 10%">포인트</th>
+              <th style="width: 20%"><%= parseInt(works[0].point).toLocaleString()%></th>
+            </tr>
+          </table>
         <hr/>
+        
         <table style="width: 100%; text-align: center">
             <tr>
                 <th>이름</th>
@@ -95,7 +102,7 @@
                 <th>리뷰</th>
             </tr>
             <!--        여기 부분에 들어갈 데이터들-->
-            <%for (let i=0; i<works.length; i++){%>
+            <%for (let i=1; i<works.length; i++){%>
             <tr id="tr<%=works[i].workId%>">
                 <td><%=works[i].name%></td>
                 <td><%=works[i].phone%></td>

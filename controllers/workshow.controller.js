@@ -5,7 +5,7 @@ class WorkShowController {
 
   getWork = async (req, res, next) => {
     const WorkShow = await this.workShowService.findAllWork();
-    console.log(WorkShow)
+
     res.render('workShow', { datas: WorkShow });
   };
 }

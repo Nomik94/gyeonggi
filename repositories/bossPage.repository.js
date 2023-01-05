@@ -12,7 +12,7 @@ class BossPageRepository {
       raw: true,
       attributes: ['point'],
     });
-    console.log(user);
+
     const works = await this.WorkModel.findAll({
       attributes: [
         'workId',
@@ -23,6 +23,7 @@ class BossPageRepository {
         'boss_id',
         'User.name',
         'User.address',
+        'User.phoneNumber',
       ],
       where: {
         [Op.and]: [{ status: { [Op.gt]: 0 }, boss_id: userId }],
@@ -49,6 +50,7 @@ class BossPageRepository {
       const createdAt = works[i].createdAt;
       const name = works[i].name;
       const address = works[i].address;
+      const phoneNumber = works[i].phoneNumber;
       work.push({
         workId: workId,
         name: name,
@@ -57,6 +59,7 @@ class BossPageRepository {
         userWanted: userWanted,
         address: address,
         createdAt: createdAt,
+        phoneNumber: phoneNumber,
       });
     }
 
