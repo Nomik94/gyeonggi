@@ -4,7 +4,7 @@ let mockBossReviewRepository = {
   findAllReview: jest.fn(),
 };
 
-let mockUserId = 2;
+let mockUserId = 1;
 
 let bossReviewService = new BossReviewService();
 bossReviewService.bossReviewRepository = mockBossReviewRepository;
