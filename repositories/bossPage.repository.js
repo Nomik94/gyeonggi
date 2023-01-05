@@ -20,10 +20,7 @@ class BossPageRepository {
         'status',
         'img',
         'userWanted',
-        'boss_id',
-        'User.name',
-        'User.address',
-        'User.phoneNumber',
+        'user_id',
       ],
       where: {
         [Op.and]: [{ status: { [Op.gt]: 0 }, boss_id: userId }],
@@ -48,9 +45,12 @@ class BossPageRepository {
       const img = works[i].img;
       const userWanted = works[i].userWanted;
       const createdAt = works[i].createdAt;
-      const name = works[i].name;
-      const address = works[i].address;
-      const phoneNumber = works[i].phoneNumber;
+      const user = await User.findOne({
+        where: { userId: works[i].user_id },
+      });
+      const name = user.name;
+      const address = user.address;
+      const phoneNumber = user.phoneNumber;
       work.push({
         workId: workId,
         name: name,
